@@ -1,0 +1,43 @@
+<app-top-bar userID="-1"/>
+<div class="main">
+	<div class="container" style="width: 18em; margin-top: 1em; padding: 8px;">
+		<div class="header">Please log in</div>
+		<table style="margin: 0 auto;">
+		<tr>
+		<td>E-mail: </td>
+		<td><input type="text" #email /></td>
+		</tr>
+		<tr>
+		<td>Password: </td>
+		<td><input type="password" #password /></td>
+		</tr>
+		</table>
+@if (showMsg)
+{
+		<div class="error">E-mail or password is incorrect.</div>
+}
+		<div class="center">
+		<button (click)="onLoginClick(email.value, password.value);">Log in</button>
+		</div>
+	</div>
+
+	<div class="container" style="width: 18em; margin-top: 1em; padding: 8px;">
+		<div class="header">Forgot your password?</div>
+		<table style="margin: 0 auto;">
+		<tr>
+		<td>E-mail: </td>
+		<td><input type="text" #email /></td>
+		</tr>
+		</table>
+		<div class="center">
+		<button (click)="onRecover();">Request password reset</button>
+		</div>
+	</div>
+
+	<div class="container" style="width: 18em; margin-top: 1em; padding: 8px;">
+		<div class="header">Not a BJM user?</div>
+		<div class="center">
+		<button (click)="onRegister();">Register now!</button>
+		</div>
+	</div>
+</div>

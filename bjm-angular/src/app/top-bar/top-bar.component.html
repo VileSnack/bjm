@@ -1,0 +1,21 @@
+<div class="bar">
+<div class="center">
+<span class="title">Better Job Match</span>
+@if (-1 == userID)
+{
+<span class="subtitle">Match jobs to skills.</span>
+}
+@else
+{
+<span class="subtitle">
+	<span (click)="navigate('/home');">Home</span>
+	&#9670;
+	<span (click)="navigate('/profile');">Find jobs</span>
+	&#9670;
+	<span (click)="navigate('/profile');">Profile</span>
+	&#9670;
+	<span (click)="logout();">Log out</span>
+</span>
+}
+</div>
+</div>

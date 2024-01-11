@@ -1,0 +1,37 @@
+body {
+	font-family: sans-serif;
+	margin: 0;
+	cursor: default;
+}
+
+div.container {
+	width: auto;
+	margin: 1em .5em 0 .5em;
+	border: 1px solid #cccccc;
+	border-radius: 10px;
+	box-shadow: 0 10px 15px #dddddd;
+}
+
+.header {
+	font-size: 120%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.center {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+div.container div {
+	margin: 7px;
+}
+
+div.container hr {
+	border-bottom: 0;
+	border-left: 0;
+	border-right: 0;
+	border-top: 1px solid #cccccc;
+}
