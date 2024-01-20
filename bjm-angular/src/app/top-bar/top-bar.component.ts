@@ -11,10 +11,11 @@ export class TopBarComponent {
 	@Input() userID: number;
 
 	navigate(url: string) {
-		this.router.navigate([`${url}/${this.userID}`]);
+//		console.log(`User ID: ${this.userID}.`);
+		this.router.navigate([`${url}/${this.userID}`], { skipLocationChange: true });
 	}
 
 	logout() {
-		this.router.navigate(['/login']);
+		this.router.navigate(['/login'], { skipLocationChange: true });
 	}
 }

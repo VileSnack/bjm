@@ -1,7 +1,7 @@
 <app-top-bar [userID]="userID"/>
 <table style="margin: 0 auto;">
 <tr>
-<td style="vertical-align: top;"><app-user-card [userID]="userID"/></td>
+<td style="vertical-align: top;"><app-user-card *ngIf="userData != null" [userData]="userData"/></td>
 <td style="vertical-align: top;"><app-newsfeed /></td>
 <td style="vertical-align: top;"><app-messages /></td>
 <td style="vertical-align: top;"><app-ad-feed /></td>

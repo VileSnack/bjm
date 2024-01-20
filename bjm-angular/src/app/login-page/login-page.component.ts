@@ -38,7 +38,7 @@ export class LoginPageComponent
 		this.apiService.loginUser(email, password).subscribe((data:any) => {
 			if (data.success)
 			{
-				this.router.navigate([`/home/${data.userID}`]);
+				this.router.navigate([`/home/${data.userID}`], { skipLocationChange: true });
 			}
 			else
 			{
@@ -49,10 +49,10 @@ export class LoginPageComponent
 	}
 
 	onRecover() {
-		this.router.navigate(['/recover']);
+		this.router.navigate(['/recover'], { skipLocationChange: true });
 	}
 
 	onRegister() {
-		this.router.navigate(['/register']);
+		this.router.navigate(['/register'], { skipLocationChange: true });
 	}
 }

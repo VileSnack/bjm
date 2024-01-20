@@ -30,6 +30,7 @@ export class ProfileComponent {
 			// The route contains the user ID as a string, so it has to be converted to a number.
 			//
 			this.userID = +params.get('userID');
+			console.log(`Profile UserID: ${this.userID}.`);
 
 			//--------------------------------------------------------------------------------------
 			// Use the user ID to fetch the user data from the API.

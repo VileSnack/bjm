@@ -38,7 +38,7 @@ export class HomePageComponent {
 				if (data.success)
 				{
 					this.userData = data.user;
-					console.log(this.userData);
+//					console.log(this.userData);
 				}
 			});
 		});
