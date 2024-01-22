@@ -27,10 +27,9 @@ export class ProfileComponent {
 		this.route.paramMap.subscribe(params => {
 
 			//--------------------------------------------------------------------------------------
-			// The route contains the user ID as a string, so it has to be converted to a number.
+			// The ID is passed in the routing.
 			//
-			this.userID = +params.get('userID');
-			console.log(`Profile UserID: ${this.userID}.`);
+			this.userID = +params.get('userID');	// it's a string, convert
 
 			//--------------------------------------------------------------------------------------
 			// Use the user ID to fetch the user data from the API.
