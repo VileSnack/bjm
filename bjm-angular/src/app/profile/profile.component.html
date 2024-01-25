@@ -2,16 +2,33 @@
 <table style="margin: 0 auto;">
 <tr>
 <td style="vertical-align: top;">
-<div class="container" style="width: 62em;">
+<div class="container" style="width: 30.5em;">
 <div>
 <table *ngIf="null !== userData">
+<caption>Basic User Data</caption>
+<tr *ngIf="2 === userData.NamingConventionID"><td>Surname</td><td><input id="profile_family_name" [(ngModel)]="userData.FamilyName" /></td></tr>
 <tr><td>Given name</td><td><input id="profile_given_name" [(ngModel)]="userData.GivenName" /></td></tr>
 <tr><td>Middle name(s)</td><td><input id="profile_middle_name" [(ngModel)]="userData.MiddleName" /></td></tr>
-<tr><td>Surname</td><td><input id="profile_family_name" [(ngModel)]="userData.FamilyName" /></td></tr>
-<tr><td>Summary</td><td><input id="profile_summary" [(ngModel)]="userData.Summary" /></td></tr>
-<tr><td>E-mail</td><td><input id="profile_emailaddress" [(ngModel)]="userData.EmailAddress" /></td></tr>
+<tr *ngIf="2 !== userData.NamingConventionID"><td>Surname</td><td><input id="profile_family_name" [(ngModel)]="userData.FamilyName" /></td></tr>
+<tr>
+	<td>Naming tradition:</td>
+	<td>
+		<select id="profile_naming_convention" [(ngModel)]="userData.NamingConventionID">
+			<option *ngFor="let item of namingConventions" [ngValue]="item.id">{{item.DisplayText}}</option>
+		</select>
+	</td>
+</tr>
+<tr><td>E-mail</td><td><input class="email" id="profile_emailaddress" [(ngModel)]="userData.EmailAddress" /></td></tr>
+<tr><td>Summary</td><td><input class="summary" id="profile_summary" [(ngModel)]="userData.Summary" /></td></tr>
+<tr><td></td><td><button (click)="update($event);">Update Basic User Data</button></td></tr>
+<tr *ngIf="updateMsg !==''"><td class="alert" colspan="2">{{updateMsg}}</td></tr>
 </table>
 </div>
+</div>
+</td>
+<td style="vertical-align: top;">
+<div class="container" style="width: 30.5em;">
+<div>Some other stuff will go here.</div>
 </div>
 </td>
 <td style="vertical-align: top;"><app-ad-feed /></td>

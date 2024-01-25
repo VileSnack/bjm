@@ -35,3 +35,5 @@ div.container hr {
 	border-right: 0;
 	border-top: 1px solid #cccccc;
 }
+
+.alert { color: red; text-align: center;}

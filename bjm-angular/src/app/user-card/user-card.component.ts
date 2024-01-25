@@ -8,4 +8,14 @@ import { ApiService } from '../api.service';
 })
 export class UserCardComponent {
 	@Input() userData: any;
+
+	userTypes = [
+		{ id: 1, DisplayText: "Administrator" },
+		{ id: 2, DisplayText: "Job Seeker" },
+		{ id: 3, DisplayText: "HR Representative" }
+	];
+	
+	userType(): string {
+		return this.userTypes.find(type => type.id == this.userData.UserTypeID).DisplayText;
+	}
 }

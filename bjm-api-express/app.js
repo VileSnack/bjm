@@ -51,8 +51,6 @@ app.get("/", (req, res) => {
 app.post('/login', (req, res) => {
 	let sql = "SELECT * FROM Users WHERE EmailAddress = ?;";
 
-//	console.log(`Login for email "${req.body.email}" detected.`);
-
 	conn.query(sql, [req.body.email], function (err, rows, fields) {
 		if (err) throw err;
 
@@ -88,6 +86,33 @@ app.post('/getUser', (req, res) => {
 		{
 			res.json({ success: true, user: rows[0] });
 		}
+	});
+});
+
+app.post('/updateUser', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let sql = "UPDATE Users SET"
+		+ " EmailAddress = ?"
+		+ ", FamilyName = ?"
+		+ ", GivenName = ?"
+		+ ", MiddleName = ?"
+		+ ", NamingConventionID = ?"
+		+ ", Summary = ?"
+		+ " WHERE ID = ?;";
+
+	conn.query(sql, [
+			req.body.userData.EmailAddress,
+			req.body.userData.FamilyName,
+			req.body.userData.GivenName,
+			req.body.userData.MiddleName,
+			req.body.userData.NamingConventionID,
+			req.body.userData.Summary,
+			req.body.userData.ID
+		], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, msg: 'Success' });
 	});
 });
 
