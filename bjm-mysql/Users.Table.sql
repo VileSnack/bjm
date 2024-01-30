@@ -1,0 +1,14 @@
+USE bjm;
+
+CREATE TABLE IF NOT EXISTS Users (
+	ID INT NOT NULL AUTO_INCREMENT,
+	FamilyName NVARCHAR(100),
+	GivenName NVARCHAR(100),
+	MiddleName NVARCHAR(100),
+	NamingConventionID INT,
+	UserTypeID INT,
+	EmailAddress NVARCHAR(100),
+	Summary NVARCHAR(200),
+	PRIMARY KEY (ID)
+);
+
