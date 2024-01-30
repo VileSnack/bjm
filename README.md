@@ -16,7 +16,7 @@ The root level folders in the repository are:
 
 * `bjm-angular`: This contains the code for an app built in Angular. Presently the only thing the user can do is to log in and edit his/her profile.
 
-* `bjm-api-express`: This contains the code for an API written using Node.js Express. It interfaces the front end with the 
+* `bjm-api-express`: This contains the code for an API written using Node.js Express. It interfaces the front end with the database.
 
 * `bjm-mysql`: This contains SQL scripts for creating the MySQL database used by the web site. It is very incomplete.
 
