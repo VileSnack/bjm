@@ -8,7 +8,7 @@ When I started this project my skill set was limited to C/C++ and web developmen
 
 * To create a job search site that does not suck.
 
-Most of the job search sites I've tried using match on the job title, or maybe a few key words, and I found myself combing through searches and finding that most of them had show-stoppers; either the pay was too low, or there was a requirement I was not able to meet, or the job location was outside of my commutting range. I can't escape the notion that I can develop a web site where HR people can post their opening, specify their requirements, and then see only applicants who meet those requirements, and likewise, a site where a job seeker can enter his/her qualifications and experiences, and see only those jobs for which he/she is qualified.
+Most of the job search sites I've tried using match on the job title, or maybe a few key words, and I found myself combing through searches and finding that most of them had show-stoppers; either the pay was too low, or there was a requirement I was not able to meet, or the job location was outside of my commuting range. I can't escape the notion that I can develop a web site where HR people can post their opening, specify their requirements, and then see only applicants who meet those requirements, and likewise, a site where a job seeker can enter his/her qualifications and experiences, and see only those jobs for which he/she is qualified. This will reduce time wasted due to unqualified candidates being matched to positions.
 
 # Current state
 

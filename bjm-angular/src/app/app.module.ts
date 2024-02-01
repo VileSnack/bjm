@@ -13,6 +13,7 @@ import { UserCardComponent } from './user-card/user-card.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AdFeedComponent } from './ad-feed/ad-feed.component';
+import { WorkHistoryComponent } from './work-history/work-history.component';
 
 @NgModule({
 	declarations: [
@@ -24,7 +25,8 @@ import { AdFeedComponent } from './ad-feed/ad-feed.component';
   UserCardComponent,
   NewsfeedComponent,
   MessagesComponent,
-  AdFeedComponent
+  AdFeedComponent,
+  WorkHistoryComponent
 	],
 	imports: [
 		AppRoutingModule,

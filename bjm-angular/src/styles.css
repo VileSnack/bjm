@@ -37,3 +37,7 @@ div.container hr {
 }
 
 .alert { color: red; text-align: center;}
+
+table caption {
+	font-size: 120%;
+}

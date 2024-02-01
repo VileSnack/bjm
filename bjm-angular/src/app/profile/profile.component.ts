@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ApiService } from '../api.service';
 import { switchMap } from 'rxjs/operators';
 import { UserData } from '../UserData';
+//import { WorkHistoryComponent } from '../work-history/work-history.component';
 
 @Component({
   selector: 'app-profile',
