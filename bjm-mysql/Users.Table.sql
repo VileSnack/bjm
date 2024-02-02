@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS Users (
 	FamilyName NVARCHAR(100),
 	GivenName NVARCHAR(100),
 	MiddleName NVARCHAR(100),
-	NamingConventionID INT,
+	NamingStyleID INT,
 	UserTypeID INT,
 	EmailAddress NVARCHAR(100),
 	Summary NVARCHAR(200),

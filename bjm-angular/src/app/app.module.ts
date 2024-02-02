@@ -14,6 +14,8 @@ import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AdFeedComponent } from './ad-feed/ad-feed.component';
 import { WorkHistoryComponent } from './work-history/work-history.component';
+import { RegisterComponent } from './register/register.component';
+import { NamingStyleComponent } from './naming-style/naming-style.component';
 
 @NgModule({
 	declarations: [
@@ -26,7 +28,9 @@ import { WorkHistoryComponent } from './work-history/work-history.component';
   NewsfeedComponent,
   MessagesComponent,
   AdFeedComponent,
-  WorkHistoryComponent
+  WorkHistoryComponent,
+  RegisterComponent,
+  NamingStyleComponent
 	],
 	imports: [
 		AppRoutingModule,

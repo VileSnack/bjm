@@ -6,7 +6,7 @@ export class UserData {
 	ID: number;
 	ImageFile: string;
 	MiddleName: string;
-	NamingConventionID: number;
+	NamingStyleID: number;
 	Summary: string;
 	UserName: string;
 	UserTypeID: number;

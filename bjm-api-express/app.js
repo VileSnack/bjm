@@ -69,8 +69,8 @@ app.post('/login', (req, res) => {
 
 app.post('/getUser', (req, res) => {
 	let sql = "SELECT *, 'icon.png' AS ImageFile,"
-		+ " CASE WHEN NamingConventionID = 1 THEN CONCAT(GivenName, ' ', FamilyName) ELSE CONCAT(FamilyName, ' ', GivenName) END AS UserName,"
-		+ " CASE WHEN NamingConventionID = 1 THEN CONCAT(GivenName, ' ', MiddleName, ' ', FamilyName) ELSE CONCAT(FamilyName, ' ', GivenName, ' ', MiddleName) END AS FullName"
+		+ " CASE WHEN NamingStyleID = 1 THEN CONCAT(GivenName, ' ', FamilyName) ELSE CONCAT(FamilyName, ' ', GivenName) END AS UserName,"
+		+ " CASE WHEN NamingStyleID = 1 THEN CONCAT(GivenName, ' ', MiddleName, ' ', FamilyName) ELSE CONCAT(FamilyName, ' ', GivenName, ' ', MiddleName) END AS FullName"
 		+ " FROM Users WHERE ID = ?;";
 
 	conn.query(sql, [req.body.userID], function (err, rows, fields) {
@@ -97,7 +97,7 @@ app.post('/updateUser', (req, res) => {
 		+ ", FamilyName = ?"
 		+ ", GivenName = ?"
 		+ ", MiddleName = ?"
-		+ ", NamingConventionID = ?"
+		+ ", NamingStyleID = ?"
 		+ ", Summary = ?"
 		+ " WHERE ID = ?;";
 
@@ -106,7 +106,7 @@ app.post('/updateUser', (req, res) => {
 			req.body.userData.FamilyName,
 			req.body.userData.GivenName,
 			req.body.userData.MiddleName,
-			req.body.userData.NamingConventionID,
+			req.body.userData.NamingStyleID,
 			req.body.userData.Summary,
 			req.body.userData.ID
 		], function (err, rows, fields) {

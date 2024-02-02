@@ -42,6 +42,11 @@ export class ProfileComponent {
 		});
 	}
 
+	selectChangedHandler(nameStyleID: number)
+	{
+		this.userData.NamingStyleID = nameStyleID;
+	}
+
 	ngOnInit()
 	{
 		//------------------------------------------------------------------------------------------
