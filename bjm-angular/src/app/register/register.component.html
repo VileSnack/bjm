@@ -13,7 +13,7 @@
 <tr><td>Naming tradition:</td><td><app-naming-style [(selectedValue)]="userData.NamingStyleID" (selectChanged)="onNamingStyleChanged($event)" /></td></tr>
 <tr><td>E-mail</td><td><input class="email" id="profile_emailaddress" [(ngModel)]="userData.EmailAddress" /></td></tr>
 <tr><td>Summary</td><td><input class="summary" id="profile_summary" [(ngModel)]="userData.Summary" /></td></tr>
-<tr><td></td><td><button (click)="addUser();">Create User</button></td></tr>
+<tr><td></td><td><button (click)="addUser();">Register</button></td></tr>
 <!-- tr *ngIf="updateMsg !==''"><td class="alert" colspan="2">{{updateMsg}}</td></tr -->
 </table>
 </div>

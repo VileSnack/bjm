@@ -14,7 +14,7 @@ Most of the job search sites I've tried using match on the job title, or maybe a
 
 The root level folders in the repository are:
 
-* `bjm-angular`: This contains the code for an app built in Angular. Presently the only thing the user can do is to log in and edit his/her profile.
+* `bjm-angular`: This contains the code for an app built in Angular. Presently the only thing the user can do is to log in, edit his/her basic profile data, and look at the registration page.
 
 * `bjm-api-express`: This contains the code for an API written using Node.js Express. It interfaces the front end with the database.
 
