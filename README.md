@@ -14,14 +14,14 @@ Most of the job search sites I've tried using match on the job title, or maybe a
 
 The root level folders in the repository are:
 
-* `bjm-angular`: This contains the code for an app built in Angular. Presently the only thing the user can do is to log in, edit his/her basic profile data, and look at the registration page.
+* `bjm-angular`: This contains the code for the app, built in Angular. Presently the only thing the user can do is to log in, edit his/her basic profile data, and look at the registration page.
 
 * `bjm-api-express`: This contains the code for an API written using Node.js Express. It interfaces the front end with the database.
 
 * `bjm-mysql`: This contains SQL scripts for creating the MySQL database used by the web site. It is very incomplete.
 
+* `bjm-react`: This contains the code for the app, built in React. It will generally lag behind the development of the Angular version.
+
 The project is not readily deployable in its present condition; one of my goals is to get it into a fully automated and deployable state.
 
-Among other things, I also want to get around to learning React, and implementing the site functionality in React, in parallel with the Angular implementation, such that either one of the two can be deployed with no difference to the UX, and in a similar line I might also create a Java API layer to duplicate the behavior.
-
-
+I might also develop other versions of the app, and other versions of the API.

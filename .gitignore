@@ -3,3 +3,16 @@ bjm-angular/node_modules
 bjm-api-express/node_modules
 bjm-angular/.editorconfig
 bjm-angular/.vscode
+bjm-react/node_modules
+bjm-react/.pnp
+bjm-react/.pnp.js
+bjm-react/coverage
+bjm-react/build
+bjm-react/.DS_Store
+bjm-react/.env.local
+bjm-react/.env.development.local
+bjm-react/.env.test.local
+bjm-react/.env.production.local
+bjm-react/npm-debug.log*
+bjm-react/yarn-debug.log*
+bjm-react/yarn-error.log*

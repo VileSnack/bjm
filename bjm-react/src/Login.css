@@ -1,0 +1,19 @@
+.main {
+	width: auto;
+	margin:auto;
+}
+
+.header {
+	font-size: 120%;
+	width: auto;
+	text-align: center;
+}
+
+button {
+	margin-top: .5em;
+}
+
+.error {
+	color: red;
+	text-align: center;
+}

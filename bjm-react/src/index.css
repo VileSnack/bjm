@@ -4,7 +4,8 @@ body {
 	cursor: default;
 }
 
-div.container {
+div.container
+{
 	width: auto;
 	margin: 1em .5em 0 .5em;
 	border: 1px solid #cccccc;
