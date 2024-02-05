@@ -22,4 +22,8 @@ export class ApiService {
 	updateUser(userData: UserData): Observable<any> {
 		return this.httpClient.post<any>(`${this.url}/updateUser`, { 'userData': userData}, { headers: { Accept: 'application/json' } });
 	}
+
+	addUser(userData: UserData): Observable<any> {
+		return this.httpClient.post<any>(`${this.url}/addUser`, { 'userData': userData}, { headers: { Accept: 'application/json' } });
+	}
 }

@@ -116,6 +116,28 @@ app.post('/updateUser', (req, res) => {
 	});
 });
 
+app.post('/addUser', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let sql = "INSERT INTO Users (EmailAddress, FamilyName, GivenName, MiddleName, NamingStyleID, Summary, UserTypeID)"
+		+ " VALUES (?, ?, ?, ?, ?, ?, ?)"
+	;
+
+	conn.query(sql, [
+			req.body.userData.EmailAddress,
+			req.body.userData.FamilyName,
+			req.body.userData.GivenName,
+			req.body.userData.MiddleName,
+			req.body.userData.NamingStyleID,
+			req.body.userData.Summary,
+			req.body.userData.UserTypeID
+		], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, msg: 'Success' });
+	});
+});
+
 app.listen(PORT, () => {
 	console.log("Server Listening on PORT:", PORT);
 });

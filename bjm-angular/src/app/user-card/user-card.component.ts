@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ApiService } from '../api.service';
+import { UserData } from '../UserData';
 
 @Component({
   selector: 'app-user-card',
@@ -7,15 +7,15 @@ import { ApiService } from '../api.service';
   styleUrl: './user-card.component.css'
 })
 export class UserCardComponent {
-	@Input() userData: any;
+	@Input() userData: UserData;
 
 	userTypes = [
 		{ id: 1, DisplayText: "Administrator" },
 		{ id: 2, DisplayText: "Job Seeker" },
 		{ id: 3, DisplayText: "HR Representative" }
 	];
-	
+
 	userType(): string {
-		return this.userTypes.find(type => type.id == this.userData.UserTypeID).DisplayText;
+		return this.userTypes.find(type => type.id == this.userData.UserTypeID)?.DisplayText;
 	}
 }

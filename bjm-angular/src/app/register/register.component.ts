@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from '../api.service';
 import { UserData } from '../UserData';
 
 @Component({
@@ -7,6 +9,12 @@ import { UserData } from '../UserData';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+	constructor (private apiService: ApiService
+		, private router: Router)
+	{ }
+
+	updateMsg: string = null;
+
 	userData : UserData = {
 		ID: -1,
 		EmailAddress: '',
@@ -18,16 +26,39 @@ export class RegisterComponent {
 		NamingStyleID: 1,
 		Summary: '',
 		UserName: '',
-		UserTypeID: 1
+		UserTypeID: 2
 	};
 
 	onNamingStyleChanged(nameStyleID: number)
 	{
 		this.userData.NamingStyleID = nameStyleID;
 	}
-	
+
+	onUserTypeChanged(userTypeID: number)
+	{
+		this.userData.UserTypeID = userTypeID;
+	}
+
 	addUser()
 	{
-		console.log('addUser() fired.');
+		if ('' === this.userData.Summary)
+		{
+			this.userData.Summary = `New user, joined ${new Date()}`;
+		}
+
+		this.apiService.addUser(this.userData).subscribe((data:any) => {
+			this.updateMsg = data.msg;
+			setTimeout(() => this.updateMsg = '', 5000);
+		});
+	}
+	
+	cancel()
+	{
+		this.router.navigate(['/login'], { skipLocationChange: true });
+	}
+
+	disabled() : boolean
+	{
+		return (this.userData.EmailAddress === '');
 	}
 }

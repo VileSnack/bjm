@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { ApiService } from '../api.service';
 import { switchMap } from 'rxjs/operators';
+import { ApiService } from '../api.service';
+import { UserData } from '../UserData';
 
 @Component({
 	selector: 'app-home-page',
@@ -11,7 +12,7 @@ import { switchMap } from 'rxjs/operators';
 export class HomePageComponent {
 	userID: number = -1;
 
-	userData = null;
+	userData : UserData = null;
 
 	constructor (private route: ActivatedRoute,
 		private router: Router,
@@ -38,7 +39,6 @@ export class HomePageComponent {
 				if (data.success)
 				{
 					this.userData = data.user;
-//					console.log(this.userData);
 				}
 			});
 		});

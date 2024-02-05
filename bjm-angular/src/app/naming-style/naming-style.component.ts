@@ -9,6 +9,9 @@ export class NamingStyleComponent {
 	@Input() selectedValue: number;
 	@Output() selectChanged: EventEmitter<number> = new EventEmitter();
 
+	//----------------------------------------------------------------------------------------------
+	// TODO: Re-factor this so that the contents are drawn from table NamingStyles in the DB.
+	//
 	namingStyles:Array<Object> = [
 		{ id: 1, DisplayText: "Given name, middle name(s), family name" },
 		{ id: 2, DisplayText: "Family name, middle name(s), given name" },

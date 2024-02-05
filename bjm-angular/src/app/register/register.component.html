@@ -1,4 +1,4 @@
-<app-top-bar [userID]="-1"/>
+<app-top-bar [userID]="-1" />
 <table style="margin: 0 auto;">
 <tr>
 <td style="vertical-align: top;">
@@ -6,15 +6,16 @@
 <div>
 <table style="width: 100%">
 <caption>New User Registration</caption>
-<tr *ngIf="2 === userData.NamingStyleID"><td>Surname</td><td><input id="profile_family_name" [(ngModel)]="userData.FamilyName" /></td></tr>
-<tr><td>Given name</td><td><input id="profile_given_name" [(ngModel)]="userData.GivenName" /></td></tr>
+<tr *ngIf="2 === userData.NamingStyleID"><td>Surname <span class="alert">*</span></td><td><input id="profile_family_name" [(ngModel)]="userData.FamilyName" /></td></tr>
+<tr><td>Given name <span class="alert">*</span></td><td><input id="profile_given_name" [(ngModel)]="userData.GivenName" /></td></tr>
 <tr><td>Middle name(s)</td><td><input id="profile_middle_name" [(ngModel)]="userData.MiddleName" /></td></tr>
-<tr *ngIf="2 !== userData.NamingStyleID"><td>Surname</td><td><input id="profile_family_name" [(ngModel)]="userData.FamilyName" /></td></tr>
-<tr><td>Naming tradition:</td><td><app-naming-style [(selectedValue)]="userData.NamingStyleID" (selectChanged)="onNamingStyleChanged($event)" /></td></tr>
-<tr><td>E-mail</td><td><input class="email" id="profile_emailaddress" [(ngModel)]="userData.EmailAddress" /></td></tr>
+<tr *ngIf="2 !== userData.NamingStyleID"><td>Surname <span class="alert">*</span></td><td><input id="profile_family_name" [(ngModel)]="userData.FamilyName" /></td></tr>
+<tr><td>Naming tradition</td><td><app-naming-style [(selectedValue)]="userData.NamingStyleID" (selectChanged)="onNamingStyleChanged($event)" /></td></tr>
+<tr><td>E-mail <span class="alert">*</span></td><td><input class="email" id="profile_emailaddress" [(ngModel)]="userData.EmailAddress" /></td></tr>
 <tr><td>Summary</td><td><input class="summary" id="profile_summary" [(ngModel)]="userData.Summary" /></td></tr>
-<tr><td></td><td><button (click)="addUser();">Register</button></td></tr>
-<!-- tr *ngIf="updateMsg !==''"><td class="alert" colspan="2">{{updateMsg}}</td></tr -->
+<tr><td>User type</td><td><app-user-type [(selectedValue)]="userData.UserTypeID" (selectChanged)="onUserTypeChanged($event)" /></td></tr>
+<tr><td></td><td><button (click)="addUser();" [disabled]="disabled()">Register</button>&nbsp;<button (click)="cancel();">Cancel</button></td></tr>
+<tr *ngIf="updateMsg !==''"><td class="alert" colspan="2">{{updateMsg}}</td></tr>
 </table>
 </div>
 </div>

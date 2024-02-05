@@ -17,11 +17,6 @@ export class ProfileComponent {
 
 	updateMsg: string = null;
 
-	namingConventions:Array<Object> = [
-		{ id: 1, DisplayText: "Family name last" },
-		{ id: 2, DisplayText: "Family name first" }
-	];
-
 	userTypes:Array<Object> = [
 		{ id: 1, DisplayText: "Administrator" },
 		{ id: 2, DisplayText: "Job Seeker" },
@@ -42,7 +37,7 @@ export class ProfileComponent {
 		});
 	}
 
-	selectChangedHandler(nameStyleID: number)
+	onNamingStyleChanged(nameStyleID: number)
 	{
 		this.userData.NamingStyleID = nameStyleID;
 	}

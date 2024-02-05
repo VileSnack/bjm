@@ -11,7 +11,6 @@ export class TopBarComponent {
 	@Input() userID: number;
 
 	navigate(url: string) {
-//		console.log(`User ID: ${this.userID}.`);
 		this.router.navigate([`${url}/${this.userID}`], { skipLocationChange: true });
 	}
 

@@ -16,6 +16,7 @@ import { AdFeedComponent } from './ad-feed/ad-feed.component';
 import { WorkHistoryComponent } from './work-history/work-history.component';
 import { RegisterComponent } from './register/register.component';
 import { NamingStyleComponent } from './naming-style/naming-style.component';
+import { UserTypeComponent } from './user-type/user-type.component';
 
 @NgModule({
 	declarations: [
@@ -30,7 +31,8 @@ import { NamingStyleComponent } from './naming-style/naming-style.component';
   AdFeedComponent,
   WorkHistoryComponent,
   RegisterComponent,
-  NamingStyleComponent
+  NamingStyleComponent,
+  UserTypeComponent
 	],
 	imports: [
 		AppRoutingModule,

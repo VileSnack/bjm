@@ -12,7 +12,7 @@
 <tr *ngIf="2 !== userData.NamingStyleID"><td>Surname</td><td><input id="profile_family_name" [(ngModel)]="userData.FamilyName" /></td></tr>
 <tr>
 	<td>Naming style:</td>
-	<td><app-naming-style [selectedValue]="userData.NamingStyleID" (selectChanged)="selectChangedHandler($event)" /></td>
+	<td><app-naming-style [selectedValue]="userData.NamingStyleID" (selectChanged)="onNamingStyleChanged($event)" /></td>
 </tr>
 <tr><td>E-mail</td><td><input class="email" id="profile_emailaddress" [(ngModel)]="userData.EmailAddress" /></td></tr>
 <tr><td>Summary</td><td><input class="summary" id="profile_summary" [(ngModel)]="userData.Summary" /></td></tr>
