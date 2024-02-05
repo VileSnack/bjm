@@ -1,7 +1,0 @@
-USE bjm;
-
-CREATE TABLE IF NOT EXISTS NamingConventions (
-	ID INT NOT NULL AUTO_INCREMENT,
-	DisplayText NVARCHAR(100),
-	PRIMARY KEY (ID)
-);

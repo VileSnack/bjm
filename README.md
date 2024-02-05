@@ -14,14 +14,18 @@ Most of the job search sites I've tried using match on the job title, or maybe a
 
 The root level folders in the repository are:
 
-* `bjm-angular`: This contains the code for the app, built in Angular. Presently the only thing the user can do is to log in, edit his/her basic profile data, and look at the registration page.
+* `bjm-angular`: This contains the code for the app, built in Angular. Presently the only thing the user can do is register new users, log in, and edit his/her basic profile data.
 
 * `bjm-api-express`: This contains the code for an API written using Node.js Express. It interfaces the front end with the database.
 
 * `bjm-mysql`: This contains SQL scripts for creating the MySQL database used by the web site. It is very incomplete.
 
-* `bjm-react`: This contains the code for the app, built in React. It will generally lag behind the development of the Angular version.
+* `bjm-react`: This contains the code for the app, built in React. At the moment it has only the barest functionality, and since all development will take place on the Angular version before being deported to the React version, the latter will always lag behind the former.
+
+# Deployment
 
 The project is not readily deployable in its present condition; one of my goals is to get it into a fully automated and deployable state.
 
-I might also develop other versions of the app, and other versions of the API.
+The best way is to clone the repo to your local directory, ensure that the required framework is installed for the front end and back end, and then launch their respective servers.
+
+To set up the DB you will need to create a MySQL DB named `bjm`, and then run the scripts in the bjm-mysql folder against that DB.
