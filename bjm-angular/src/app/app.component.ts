@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { UserData } from './UserData';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'bjm-angular';
+	userData: UserData = null;
 }

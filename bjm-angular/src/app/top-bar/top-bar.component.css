@@ -9,12 +9,12 @@
 .title {
 	font-size: 24pt;
 	color: #0077ee;
+	margin-right: 1em;
 }
 
 .subtitle {
 	font-size: 12pt;
 	color: #0077ee;
-	margin-left: 1em;
 }
 
 .subtitle span {

@@ -1,21 +1,17 @@
 <div class="bar">
 <div class="center">
 <span class="title">Better Job Match</span>
-@if (-1 == userID)
-{
-<span class="subtitle">Match jobs to skills.</span>
-}
-@else
-{
-<span class="subtitle">
+<span class="subtitle" *ngIf="!(showLinks || showLogout)">Match jobs to skills.</span>
+<span class="subtitle" *ngIf="showLinks">
 	<span (click)="navigate('/home');">Home</span>
 	&#9670;
 	<span (click)="navigate('/profile');">Find jobs</span>
 	&#9670;
 	<span (click)="navigate('/profile');">Profile</span>
-	&#9670;
+</span>
+<span class="subtitle" *ngIf="showLinks && showLogout">&nbsp;&#9670;&nbsp;</span>
+<span class="subtitle" *ngIf="showLogout">
 	<span (click)="logout();">Log out</span>
 </span>
-}
 </div>
 </div>

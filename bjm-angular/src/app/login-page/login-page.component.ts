@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { DataService } from '../data.service';
+import { UserData } from '../UserData';
 
 @Component({
 	selector: 'app-login-page',
@@ -11,17 +13,18 @@ export class LoginPageComponent
 {
 	constructor(
 		private router: Router,
-		private apiService: ApiService
+		private apiService: ApiService,
+		private dataService: DataService
 	) { }
+
+	@Output() userChanged: EventEmitter<UserData> = new EventEmitter();
 
 	showMsg: boolean = false;
 	errorMsg: string = '';
 
-	userID: number = -1;
-
 	ngOnInit()
 	{
-		this.userID = -1;
+		this.dataService.setUserData(null);
 	}
 
 	//----------------------------------------------------------------------------------------------
@@ -38,7 +41,19 @@ export class LoginPageComponent
 		this.apiService.loginUser(email, password).subscribe((data:any) => {
 			if (data.success)
 			{
-				this.router.navigate([`/home/${data.userID}`], { skipLocationChange: true });
+				this.dataService.setUserData(data.userData);
+				switch (data.userData.UserTypeID)
+				{
+					case 1: // Administrator
+						this.router.navigate([`/admin`], { skipLocationChange: true });
+					break;
+					case 2: // Job seeker
+						this.router.navigate([`/home`], { skipLocationChange: true });
+					break;
+					case 3: // Recruiter
+						this.router.navigate([`/home`], { skipLocationChange: true });
+					break;
+				}
 			}
 			else
 			{

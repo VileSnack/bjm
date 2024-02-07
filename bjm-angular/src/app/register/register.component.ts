@@ -19,13 +19,11 @@ export class RegisterComponent {
 		ID: -1,
 		EmailAddress: '',
 		FamilyName: '',
-		FullName: '',
 		GivenName: '',
-		ImageFile: '',
+		ImageFileName: '',
 		MiddleName: '',
 		NamingStyleID: 1,
 		Summary: '',
-		UserName: '',
 		UserTypeID: 2
 	};
 

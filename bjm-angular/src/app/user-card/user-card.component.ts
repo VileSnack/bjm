@@ -18,4 +18,19 @@ export class UserCardComponent {
 	userType(): string {
 		return this.userTypes.find(type => type.id == this.userData.UserTypeID)?.DisplayText;
 	}
+
+	userName() : string
+	{
+		if (this.userData.NamingStyleID == 2)
+		{
+			return `${this.userData.FamilyName} ${this.userData.GivenName}`;
+		}
+
+		return `${this.userData.GivenName} ${this.userData.FamilyName}`;
+	}
+
+	ngOnInit()
+	{
+		console.log(this.userData);
+	}
 }

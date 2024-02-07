@@ -8,10 +8,11 @@ import { Router } from '@angular/router';
 })
 export class TopBarComponent {
 	constructor(private router: Router) {}
-	@Input() userID: number;
+	@Input() showLinks: boolean;
+	@Input() showLogout: boolean;
 
 	navigate(url: string) {
-		this.router.navigate([`${url}/${this.userID}`], { skipLocationChange: true });
+		this.router.navigate([`${url}`], { skipLocationChange: true });
 	}
 
 	logout() {

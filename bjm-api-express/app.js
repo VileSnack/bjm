@@ -62,16 +62,13 @@ app.post('/login', (req, res) => {
 		}
 		else
 		{
-			res.json({ success: true, userID: rows[0].ID });
+			res.json({ success: true, userData: rows[0] });
 		}
 	});
 });
 
 app.post('/getUser', (req, res) => {
-	let sql = "SELECT *, 'icon.png' AS ImageFile,"
-		+ " CASE WHEN NamingStyleID = 1 THEN CONCAT(GivenName, ' ', FamilyName) ELSE CONCAT(FamilyName, ' ', GivenName) END AS UserName,"
-		+ " CASE WHEN NamingStyleID = 1 THEN CONCAT(GivenName, ' ', MiddleName, ' ', FamilyName) ELSE CONCAT(FamilyName, ' ', GivenName, ' ', MiddleName) END AS FullName"
-		+ " FROM Users WHERE ID = ?;";
+	let sql = "SELECT * FROM Users WHERE ID = ?;";
 
 	conn.query(sql, [req.body.userID], function (err, rows, fields) {
 		if (err) throw err;

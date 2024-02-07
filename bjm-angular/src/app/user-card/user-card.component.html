@@ -1,9 +1,9 @@
-<div class="container" style="width: 15em;">
+<div class="container" style="width: 15em;" *ngIf="null != userData">
 <div class="center">
-<img src="../assets/images/{{userData.ImageFile}}" style="max-width: 80px; max-height: 80px;" />
+<img src="../assets/images/{{userData.ImageFileName ?? 'icon.png'}}" style="max-width: 80px; max-height: 80px;" />
 </div>
 <hr/>
-<div class="header">{{userData.UserName}}</div>
+<div class="header">{{userName()}}</div>
 <hr/>
 <div class="center">{{userType()}}</div>
 <hr/>

@@ -17,6 +17,8 @@ import { WorkHistoryComponent } from './work-history/work-history.component';
 import { RegisterComponent } from './register/register.component';
 import { NamingStyleComponent } from './naming-style/naming-style.component';
 import { UserTypeComponent } from './user-type/user-type.component';
+import { IndustriesPanelComponent } from './industries/industries-panel.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 @NgModule({
 	declarations: [
@@ -25,14 +27,16 @@ import { UserTypeComponent } from './user-type/user-type.component';
 		HomePageComponent,
 		ProfileComponent,
 		TopBarComponent,
-  UserCardComponent,
-  NewsfeedComponent,
-  MessagesComponent,
-  AdFeedComponent,
-  WorkHistoryComponent,
-  RegisterComponent,
-  NamingStyleComponent,
-  UserTypeComponent
+		UserCardComponent,
+		NewsfeedComponent,
+		MessagesComponent,
+		AdFeedComponent,
+		WorkHistoryComponent,
+		RegisterComponent,
+		NamingStyleComponent,
+		UserTypeComponent,
+		IndustriesPanelComponent,
+		AdminPageComponent
 	],
 	imports: [
 		AppRoutingModule,
