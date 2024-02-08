@@ -135,6 +135,32 @@ app.post('/addUser', (req, res) => {
 	});
 });
 
+app.post('/addIndustry', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let sql = "INSERT INTO Industries (Name) VALUES (?);";
+
+	conn.query(sql, [
+			req.body.industry.Name
+		], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, msg: 'Success' });
+	});
+});
+
+app.get('/industries', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let sql = "SELECT * FROM Industries ORDER BY Name;";
+
+	conn.query(sql, [], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, industries: rows });
+	});
+});
+
 app.listen(PORT, () => {
 	console.log("Server Listening on PORT:", PORT);
 });

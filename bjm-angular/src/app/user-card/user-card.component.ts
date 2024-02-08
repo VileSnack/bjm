@@ -31,6 +31,5 @@ export class UserCardComponent {
 
 	ngOnInit()
 	{
-		console.log(this.userData);
 	}
 }

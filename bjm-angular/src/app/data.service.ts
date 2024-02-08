@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { ApiService } from './api.service';
 import { Industry } from './Industry';
 import { UserData } from './UserData';
 
@@ -9,7 +10,13 @@ import { UserData } from './UserData';
 export class DataService {
 	userData: UserData = null;
 	industries: Array<Industry> = null;
-	constructor() { }
+	constructor(private apiService: ApiService) { }
+
+	//----------------------------------------------------------------------------------------------
+	// This is used for notifying all subscribing components of updates to the data provided by this
+	// service.
+	//
+	subjectNotifier: Subject<null> = new Subject<null>();
 
 	public setUserData(newData: UserData)
 	{
@@ -23,6 +30,14 @@ export class DataService {
 
 	public getIndustries() : Array<Industry>
 	{
-		return new Array<Industry>();
+		return this.industries;
+	}
+
+	public update()
+	{
+		this.apiService.getIndustries().subscribe((data:any) => {
+			this.industries = data.industries;
+			this.subjectNotifier.next(null);
+		});
 	}
 }
