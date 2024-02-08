@@ -52,6 +52,10 @@ export class IndustriesPanelComponent
 
 	removeIndustry(industryID)
 	{
-		console.log(industryID);
+		this.apiService.removeIndustry(industryID).subscribe((data:any) => {
+			this.dataService.update();
+			this.updateMsg = data.msg;
+			setTimeout(() => this.updateMsg = '', 5000);
+		});
 	}
 }

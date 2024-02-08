@@ -149,6 +149,20 @@ app.post('/addIndustry', (req, res) => {
 	});
 });
 
+app.post('/removeIndustry', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let sql = "DELETE FROM Industries WHERE ID = ?;";
+
+	conn.query(sql, [
+			req.body.industryID
+		], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, msg: 'Success' });
+	});
+});
+
 app.get('/industries', (req, res) => {
 	res.header('Access-Control-Allow-Origin', '*');
 

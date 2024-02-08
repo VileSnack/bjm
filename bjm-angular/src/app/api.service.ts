@@ -16,6 +16,10 @@ export class ApiService {
 		return this.httpClient.post<any>(`${this.url}/addIndustry`, { 'industry': industry}, { headers: { Accept: 'application/json' } });
 	}
 
+	removeIndustry(industryID: number): Observable<any> {
+		return this.httpClient.post<any>(`${this.url}/removeIndustry`, { 'industryID': industryID }, { headers: { Accept: 'application/json' } });
+	}
+
 	addUser(userData: UserData): Observable<any> {
 		return this.httpClient.post<any>(`${this.url}/addUser`, { 'userData': userData}, { headers: { Accept: 'application/json' } });
 	}
