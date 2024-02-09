@@ -16,10 +16,10 @@ The root level folders in the repository are:
 
 * `bjm-angular`: This contains the code for the app, built in Angular. Presently the user can:
 
-** Register new users
-** Log in (note that the password is not required, as this is a work-in-progress).
-** Edit his/her basic profile data.
-** Administrative users can add new industries and delete existing industries.
+  * Register new users
+  * Log in (note that the password is not required, as this is a work-in-progress).
+  * Edit his/her basic profile data.
+  * Administrative users can add new industries and delete existing industries.
 
 * `bjm-api-express`: This contains the code for a RESTful API written using Node.js Express. It interfaces the front end with the database. At the moment is supports adding, getting, and updating users, and adding, getting, and deleting industries.
 
