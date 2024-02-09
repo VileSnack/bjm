@@ -14,9 +14,14 @@ Most of the job search sites I've tried using match on the job title, or maybe a
 
 The root level folders in the repository are:
 
-* `bjm-angular`: This contains the code for the app, built in Angular. Presently the only thing the user can do is register new users, log in, and edit his/her basic profile data.
+* `bjm-angular`: This contains the code for the app, built in Angular. Presently the user can:
 
-* `bjm-api-express`: This contains the code for an API written using Node.js Express. It interfaces the front end with the database.
+** Register new users
+** Log in (note that the password is not required, as this is a work-in-progress).
+** Edit his/her basic profile data.
+** Administrative users can add new industries and delete existing industries.
+
+* `bjm-api-express`: This contains the code for a RESTful API written using Node.js Express. It interfaces the front end with the database. At the moment is supports adding, getting, and updating users, and adding, getting, and deleting industries.
 
 * `bjm-mysql`: This contains SQL scripts for creating the MySQL database used by the web site. It is very incomplete.
 
@@ -28,4 +33,8 @@ The project is not readily deployable in its present condition; one of my goals 
 
 The best way is to clone the repo to your local directory, ensure that the required framework is installed for the front end and back end, and then launch their respective servers.
 
-To set up the DB you will need to create a MySQL DB named `bjm`, and then run the scripts in the bjm-mysql folder against that DB.
+To set up the DB you will need to:
+
+* Create a MySQL DB named `bjm`;
+* Configure a user to match the credentials in `bjm-api-express/app.js`
+* Run the scripts in `bjm-mysql` against that database.
