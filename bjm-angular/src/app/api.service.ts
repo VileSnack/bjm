@@ -12,20 +12,11 @@ export class ApiService {
 
 	url: string = 'http://localhost:8000';
 
+	//----------------------------------------------------------------------------------------------
+	// For handling the industries.
+	//
 	addIndustry(industry: Industry): Observable<any> {
-		return this.httpClient.post<any>(`${this.url}/addIndustry`, { 'industry': industry}, { headers: { Accept: 'application/json' } });
-	}
-
-	removeIndustry(industryID: number): Observable<any> {
-		return this.httpClient.post<any>(`${this.url}/removeIndustry`, { 'industryID': industryID }, { headers: { Accept: 'application/json' } });
-	}
-
-	addUser(userData: UserData): Observable<any> {
-		return this.httpClient.post<any>(`${this.url}/addUser`, { 'userData': userData}, { headers: { Accept: 'application/json' } });
-	}
-
-	loginUser(email: string, password: string): Observable<any> {
-		return this.httpClient.post<any>(`${this.url}/login`, { 'email': email, 'password': password }, { headers: { Accept: 'application/json' } });
+		return this.httpClient.put<any>(`${this.url}/industries`, { 'industry': industry}, { headers: { Accept: 'application/json' } });
 	}
 
 	getIndustries(): Observable<any>
@@ -33,11 +24,26 @@ export class ApiService {
 		return this.httpClient.get<any>(`${this.url}/industries`, { headers: { Accept: 'application/json' } });
 	}
 
+	removeIndustry(industryID: number): Observable<any> {
+		return this.httpClient.delete<any>(`${this.url}/industries/${industryID}`, { headers: { Accept: 'application/json' } });
+	}
+
+	//----------------------------------------------------------------------------------------------
+	// For handling users.
+	//
 	getUser(userID: number): Observable<UserData> {
-		return this.httpClient.post<UserData>(`${this.url}/getUser`, { 'userID': userID }, { headers: { Accept: 'application/json' } });
+		return this.httpClient.get<UserData>(`${this.url}/users/${userID}`, { headers: { Accept: 'application/json' } });
 	}
 
 	updateUser(userData: UserData): Observable<any> {
-		return this.httpClient.post<any>(`${this.url}/updateUser`, { 'userData': userData}, { headers: { Accept: 'application/json' } });
+		return this.httpClient.post<any>(`${this.url}/users/${userData.ID}`, { 'userData': userData}, { headers: { Accept: 'application/json' } });
+	}
+
+	addUser(userData: UserData): Observable<any> {
+		return this.httpClient.put<any>(`${this.url}/users`, { 'userData': userData}, { headers: { Accept: 'application/json' } });
+	}
+
+	loginUser(email: string, password: string): Observable<any> {
+		return this.httpClient.post<any>(`${this.url}/login`, { 'email': email, 'password': password }, { headers: { Accept: 'application/json' } });
 	}
 }

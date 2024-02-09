@@ -48,29 +48,58 @@ app.get("/", (req, res) => {
 	res.json({ message: "ok" });
 });
 
-app.post('/login', (req, res) => {
-	let sql = "SELECT * FROM Users WHERE EmailAddress = ?;";
+//--------------------------------------------------------------------------------------------------
+// REST API for Industries//
+//
+app.get('/industries', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
 
-	conn.query(sql, [req.body.email], function (err, rows, fields) {
+	let sql = "SELECT * FROM Industries ORDER BY Name;";
+
+	conn.query(sql, [], function (err, rows, fields) {
 		if (err) throw err;
 
-		res.header('Access-Control-Allow-Origin', '*');
-
-		if (0 === rows.length)
-		{
-			res.json({ success: false, msg: 'Invalid user'});
-		}
-		else
-		{
-			res.json({ success: true, userData: rows[0] });
-		}
+		res.json({ success: true, industries: rows });
 	});
 });
 
-app.post('/getUser', (req, res) => {
+app.put('/industries', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let sql = "INSERT INTO Industries (Name) VALUES (?);";
+
+	conn.query(sql, [
+			req.body.industry.Name
+		], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, msg: 'Success' });
+	});
+});
+
+app.delete('/industries/:id', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let industryID = parseInt(req.params.id);
+
+	let sql = "DELETE FROM Industries WHERE ID = ?;";
+
+	conn.query(sql, [industryID], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, msg: 'Success' });
+	});
+});
+
+//--------------------------------------------------------------------------------------------------
+// REST API for users
+//
+app.get('/users/:id', (req, res) => {
 	let sql = "SELECT * FROM Users WHERE ID = ?;";
 
-	conn.query(sql, [req.body.userID], function (err, rows, fields) {
+	let userID = parseInt(req.params.id);
+
+	conn.query(sql, [userID], function (err, rows, fields) {
 		if (err) throw err;
 
 		res.header('Access-Control-Allow-Origin', '*');
@@ -86,7 +115,7 @@ app.post('/getUser', (req, res) => {
 	});
 });
 
-app.post('/updateUser', (req, res) => {
+app.post('/users/:id', (req, res) => {
 	res.header('Access-Control-Allow-Origin', '*');
 
 	let sql = "UPDATE Users SET"
@@ -105,7 +134,7 @@ app.post('/updateUser', (req, res) => {
 			req.body.userData.MiddleName,
 			req.body.userData.NamingStyleID,
 			req.body.userData.Summary,
-			req.body.userData.ID
+			parseInt(req.params.id)
 		], function (err, rows, fields) {
 		if (err) throw err;
 
@@ -113,7 +142,7 @@ app.post('/updateUser', (req, res) => {
 	});
 });
 
-app.post('/addUser', (req, res) => {
+app.put('/users', (req, res) => {
 	res.header('Access-Control-Allow-Origin', '*');
 
 	let sql = "INSERT INTO Users (EmailAddress, FamilyName, GivenName, MiddleName, NamingStyleID, Summary, UserTypeID)"
@@ -135,43 +164,22 @@ app.post('/addUser', (req, res) => {
 	});
 });
 
-app.post('/addIndustry', (req, res) => {
-	res.header('Access-Control-Allow-Origin', '*');
+app.post('/login', (req, res) => {
+	let sql = "SELECT * FROM Users WHERE EmailAddress = ?;";
 
-	let sql = "INSERT INTO Industries (Name) VALUES (?);";
-
-	conn.query(sql, [
-			req.body.industry.Name
-		], function (err, rows, fields) {
+	conn.query(sql, [req.body.email], function (err, rows, fields) {
 		if (err) throw err;
 
-		res.json({ success: true, msg: 'Success' });
-	});
-});
+		res.header('Access-Control-Allow-Origin', '*');
 
-app.post('/removeIndustry', (req, res) => {
-	res.header('Access-Control-Allow-Origin', '*');
-
-	let sql = "DELETE FROM Industries WHERE ID = ?;";
-
-	conn.query(sql, [
-			req.body.industryID
-		], function (err, rows, fields) {
-		if (err) throw err;
-
-		res.json({ success: true, msg: 'Success' });
-	});
-});
-
-app.get('/industries', (req, res) => {
-	res.header('Access-Control-Allow-Origin', '*');
-
-	let sql = "SELECT * FROM Industries ORDER BY Name;";
-
-	conn.query(sql, [], function (err, rows, fields) {
-		if (err) throw err;
-
-		res.json({ success: true, industries: rows });
+		if (0 === rows.length)
+		{
+			res.json({ success: false, msg: 'Invalid user'});
+		}
+		else
+		{
+			res.json({ success: true, userData: rows[0] });
+		}
 	});
 });
 
