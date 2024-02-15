@@ -19,6 +19,7 @@ import { NamingStyleComponent } from './naming-style/naming-style.component';
 import { UserTypeComponent } from './user-type/user-type.component';
 import { IndustriesPanelComponent } from './industries/industries-panel.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { EmployersPanelComponent } from './employers/employers-panel.component';
 
 @NgModule({
 	declarations: [
@@ -36,7 +37,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 		NamingStyleComponent,
 		UserTypeComponent,
 		IndustriesPanelComponent,
-		AdminPageComponent
+		AdminPageComponent,
+		EmployersPanelComponent
 	],
 	imports: [
 		AppRoutingModule,

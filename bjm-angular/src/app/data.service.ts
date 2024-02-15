@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { ApiService } from './api.service';
+import { Employer } from './Employer';
 import { Industry } from './Industry';
 import { UserData } from './UserData';
 
@@ -9,6 +10,7 @@ import { UserData } from './UserData';
 })
 export class DataService {
 	userData: UserData = null;
+	employers: Array<Employer> = null;
 	industries: Array<Industry> = null;
 	constructor(private apiService: ApiService) { }
 
@@ -28,6 +30,11 @@ export class DataService {
 		return this.userData;
 	}
 
+	public getEmployers() : Array<Employer>
+	{
+		return this.employers;
+	}
+
 	public getIndustries() : Array<Industry>
 	{
 		return this.industries;
@@ -37,7 +44,11 @@ export class DataService {
 	{
 		this.apiService.getIndustries().subscribe((data:any) => {
 			this.industries = data.industries;
-			this.subjectNotifier.next(null);
+
+			this.apiService.getEmployers().subscribe((data:any) => {
+				this.employers = data.employers;
+				this.subjectNotifier.next(null);
+			});
 		});
 	}
 }

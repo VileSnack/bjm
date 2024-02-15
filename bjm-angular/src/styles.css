@@ -4,7 +4,7 @@ body {
 	cursor: default;
 }
 
-div.container {
+.container {
 	width: auto;
 	margin: 1em .5em 0 .5em;
 	border: 1px solid #cccccc;
@@ -25,11 +25,11 @@ div.container {
 	text-align: center;
 }
 
-div.container div {
+.container div {
 	margin: 7px;
 }
 
-div.container hr {
+.container hr {
 	border-bottom: 0;
 	border-left: 0;
 	border-right: 0;
@@ -38,8 +38,8 @@ div.container hr {
 
 .alert { color: red; text-align: center;}
 
-table caption {
-	font-size: 120%;
-}
+.small { font-size: 80%; }
+
+table caption { font-size: 120%; }
 
 table tr td { text-align: left; }

@@ -13,6 +13,14 @@ export class ApiService {
 	url: string = 'http://localhost:8000';
 
 	//----------------------------------------------------------------------------------------------
+	// For handling employers.
+	//
+	getEmployers(): Observable<any>
+	{
+		return this.httpClient.get<any>(`${this.url}/employers`, { headers: { Accept: 'application/json' } });
+	}
+
+	//----------------------------------------------------------------------------------------------
 	// For handling the industries.
 	//
 	addIndustry(industry: Industry): Observable<any> {

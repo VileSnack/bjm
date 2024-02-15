@@ -49,7 +49,22 @@ app.get("/", (req, res) => {
 });
 
 //--------------------------------------------------------------------------------------------------
-// REST API for Industries//
+// REST API for employers
+//
+app.get('/employers', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let sql = "SELECT * FROM Employers ORDER BY Name;";
+
+	conn.query(sql, [], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, employers: rows });
+	});
+});
+
+//--------------------------------------------------------------------------------------------------
+// REST API for Industries
 //
 app.get('/industries', (req, res) => {
 	res.header('Access-Control-Allow-Origin', '*');
