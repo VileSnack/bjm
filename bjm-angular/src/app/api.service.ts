@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Employer } from './Employer';
 import { Industry } from './Industry';
 import { UserData } from './UserData';
 
@@ -15,9 +16,19 @@ export class ApiService {
 	//----------------------------------------------------------------------------------------------
 	// For handling employers.
 	//
+	addEmployer(employer: Employer): Observable<any>
+	{
+		return this.httpClient.put<any>(`${this.url}/employers`, { 'employer': employer }, { headers: { Accept: 'application/json' } });
+	}
+
 	getEmployers(): Observable<any>
 	{
 		return this.httpClient.get<any>(`${this.url}/employers`, { headers: { Accept: 'application/json' } });
+	}
+
+	removeEmployer(employerID: number): Observable<any>
+	{
+		return this.httpClient.delete<any>(`${ this.url }/employers/${ employerID }`, { headers: { Accept: 'application/json' } });
 	}
 
 	//----------------------------------------------------------------------------------------------

@@ -20,6 +20,7 @@ import { UserTypeComponent } from './user-type/user-type.component';
 import { IndustriesPanelComponent } from './industries/industries-panel.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { EmployersPanelComponent } from './employers/employers-panel.component';
+import { SelectIndustryComponent } from './select-industry/select-industry.component';
 
 @NgModule({
 	declarations: [
@@ -38,7 +39,8 @@ import { EmployersPanelComponent } from './employers/employers-panel.component';
 		UserTypeComponent,
 		IndustriesPanelComponent,
 		AdminPageComponent,
-		EmployersPanelComponent
+		EmployersPanelComponent,
+		SelectIndustryComponent
 	],
 	imports: [
 		AppRoutingModule,
@@ -46,7 +48,8 @@ import { EmployersPanelComponent } from './employers/employers-panel.component';
 		FormsModule,
 		HttpClientModule
 	],
-	providers: [],
+	providers: [
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

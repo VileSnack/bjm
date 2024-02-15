@@ -3,7 +3,7 @@
 <hr>
 <div class="center" *ngIf="!employers || (0 == employers.length)">There are no employers in the database.</div>
 <table class="center" *ngIf="employers && (0 != employers.length)">
-<tr *ngFor="let item of employers"><td style="width: 15em;">{{item.Name}}</td><td><button>Remove</button></td></tr>
+<tr *ngFor="let item of employers"><td style="width: 15em;">{{item.Name}}</td><td><button (click)="removeEmployer(item.ID)">Remove</button></td></tr>
 </table>
 <hr>
 <div class="center">
@@ -13,8 +13,8 @@
 <div [ngStyle]="{'display': isExpanded ? 'block' : 'none'}">
 <table class="center">
 <tr><td>Name</td><td><input type="text" [(ngModel)]="newEmployer.Name"/></td></tr>
-<tr><td>Industry</td><td><input type="text" [(ngModel)]="newEmployer.IndustryID"/></td></tr>
-<tr><td></td><td><button [disabled]="disableAddButton()">Add</button></td></tr>
+<tr><td>Industry</td><td><app-select-industry [selectedValue]="newEmployer.IndustryID" (selectChanged)="onIndustryChanged($event)" /></td></tr>
+<tr><td></td><td><button [disabled]="disableAddButton()" (click)="addEmployer()">Add</button></td></tr>
 </table>
 
 <div *ngIf="updateMsg !==''" class="center alert">{{updateMsg}}</div>

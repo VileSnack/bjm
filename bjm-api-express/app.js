@@ -51,6 +51,21 @@ app.get("/", (req, res) => {
 //--------------------------------------------------------------------------------------------------
 // REST API for employers
 //
+app.put('/employers', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let sql = "INSERT INTO Employers (Name, IndustryID) VALUES (?, ?);";
+
+	conn.query(sql, [
+			req.body.employer.Name,
+			req.body.employer.IndustryID
+		], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, msg: 'Success' });
+	});
+});
+
 app.get('/employers', (req, res) => {
 	res.header('Access-Control-Allow-Origin', '*');
 
@@ -63,21 +78,23 @@ app.get('/employers', (req, res) => {
 	});
 });
 
-//--------------------------------------------------------------------------------------------------
-// REST API for Industries
-//
-app.get('/industries', (req, res) => {
+app.delete('/employers/:id', (req, res) => {
 	res.header('Access-Control-Allow-Origin', '*');
 
-	let sql = "SELECT * FROM Industries ORDER BY Name;";
+	let employerID = parseInt(req.params.id);
 
-	conn.query(sql, [], function (err, rows, fields) {
+	let sql = "DELETE FROM Employers WHERE ID = ?;";
+
+	conn.query(sql, [employerID], function (err, rows, fields) {
 		if (err) throw err;
 
-		res.json({ success: true, industries: rows });
+		res.json({ success: true, employers: rows });
 	});
 });
 
+//--------------------------------------------------------------------------------------------------
+// REST API for Industries
+//
 app.put('/industries', (req, res) => {
 	res.header('Access-Control-Allow-Origin', '*');
 
@@ -89,6 +106,18 @@ app.put('/industries', (req, res) => {
 		if (err) throw err;
 
 		res.json({ success: true, msg: 'Success' });
+	});
+});
+
+app.get('/industries', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let sql = "SELECT * FROM Industries ORDER BY Name;";
+
+	conn.query(sql, [], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, industries: rows });
 	});
 });
 
@@ -109,6 +138,28 @@ app.delete('/industries/:id', (req, res) => {
 //--------------------------------------------------------------------------------------------------
 // REST API for users
 //
+app.put('/users', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let sql = "INSERT INTO Users (EmailAddress, FamilyName, GivenName, MiddleName, NamingStyleID, Summary, UserTypeID)"
+		+ " VALUES (?, ?, ?, ?, ?, ?, ?)"
+	;
+
+	conn.query(sql, [
+			req.body.userData.EmailAddress,
+			req.body.userData.FamilyName,
+			req.body.userData.GivenName,
+			req.body.userData.MiddleName,
+			req.body.userData.NamingStyleID,
+			req.body.userData.Summary,
+			req.body.userData.UserTypeID
+		], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, msg: 'Success' });
+	});
+});
+
 app.get('/users/:id', (req, res) => {
 	let sql = "SELECT * FROM Users WHERE ID = ?;";
 
@@ -150,28 +201,6 @@ app.post('/users/:id', (req, res) => {
 			req.body.userData.NamingStyleID,
 			req.body.userData.Summary,
 			parseInt(req.params.id)
-		], function (err, rows, fields) {
-		if (err) throw err;
-
-		res.json({ success: true, msg: 'Success' });
-	});
-});
-
-app.put('/users', (req, res) => {
-	res.header('Access-Control-Allow-Origin', '*');
-
-	let sql = "INSERT INTO Users (EmailAddress, FamilyName, GivenName, MiddleName, NamingStyleID, Summary, UserTypeID)"
-		+ " VALUES (?, ?, ?, ?, ?, ?, ?)"
-	;
-
-	conn.query(sql, [
-			req.body.userData.EmailAddress,
-			req.body.userData.FamilyName,
-			req.body.userData.GivenName,
-			req.body.userData.MiddleName,
-			req.body.userData.NamingStyleID,
-			req.body.userData.Summary,
-			req.body.userData.UserTypeID
 		], function (err, rows, fields) {
 		if (err) throw err;
 

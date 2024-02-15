@@ -1,0 +1,3 @@
+<select [(ngModel)]="selectedValue" #industryID (change)="onChange(industryID.value)">
+<option *ngFor="let industry of industries" [ngValue]="industry.ID">{{industry.Name}}</option>
+</select>
