@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { DataService } from '../data.service';
 import { Industry } from '../Industry';
 
@@ -18,12 +17,8 @@ export class SelectIndustryComponent {
 
 	ngOnInit()
 	{
-		this.dataService.update();
-	}
-
-	notifierSubscription: Subscription = this.dataService.subjectNotifier.subscribe(notified => {
 		this.industries = this.dataService.getIndustries();
-	});
+	}
 
 	onChange(newSelectedValue: number)
 	{

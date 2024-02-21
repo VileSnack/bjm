@@ -3,6 +3,17 @@
 <td><button (click)="edit()">Edit</button></td>
 <td><button (click)="remove()">Remove</button></td>
 </tr>
-<tr *ngIf="expanded">
-<td colspan="3">Expanded!</td>
+<tr [ngStyle]="{'display': isExpanded }">
+<td colspan="3">
+<div class="sub-container" style="max-width: 29em">
+<div>
+<table>
+<tr><td style="width: 6em;">Name</td><td><input type="text" [ngModel]="employer.Name" /></td></tr>
+<tr><td>Industry</td><td><app-select-industry [selectedValue]="employer.IndustryID" (selectChanged)="onIndustryChanged($event)" /></td></tr>
+<tr><td>Description</td><td><textarea style="max-width: 25em" [ngModel]="employer.Spiel"></textarea></td></tr>
+<tr><td></td><td><button (click)="update()">Update</button></td></tr>
+</table>
+</div>
+</div>
+</td>
 </tr>

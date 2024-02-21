@@ -12,6 +12,17 @@ body {
 	box-shadow: 0 10px 15px #dddddd;
 }
 
+.container div {
+	margin: 7px;
+}
+
+.container hr {
+	border-bottom: 0;
+	border-left: 0;
+	border-right: 0;
+	border-top: 1px solid #cccccc;
+}
+
 .header {
 	font-size: 120%;
 	margin-left: auto;
@@ -25,17 +36,6 @@ body {
 	text-align: center;
 }
 
-.container div {
-	margin: 7px;
-}
-
-.container hr {
-	border-bottom: 0;
-	border-left: 0;
-	border-right: 0;
-	border-top: 1px solid #cccccc;
-}
-
 .alert { color: red; text-align: center;}
 
 .small { font-size: 80%; }
@@ -43,3 +43,23 @@ body {
 table caption { font-size: 120%; }
 
 table tr td { text-align: left; }
+
+.sub-container {
+	width: auto;
+	margin: 1em .5em 0 .5em;
+	border: 1px solid #cccccc;
+	border-radius: 7px;
+	box-shadow: 0 7px 10px #dddddd;
+}
+
+.sub-container div {
+	margin: 5px;
+}
+
+.sub-container hr {
+	border-bottom: 0;
+	border-left: 0;
+	border-right: 0;
+	border-top: 1px solid #cccccc;
+}
+

@@ -9,12 +9,22 @@ import { Employer } from '../Employer';
 export class EditEmployerComponent {
 	@Input() employer: Employer;
 
-	expanded: boolean = false;
+	isExpanded: string = 'none';
 
 	edit()
 	{
-		this.expanded = !this.expanded;
+		this.isExpanded = 'table-row';
+	}
+
+	onIndustryChanged(industryID: number)
+	{
+		this.employer.IndustryID = industryID;
 	}
 
 	remove() {}
+
+	update()
+	{
+		this.isExpanded = 'none';
+	}
 }
