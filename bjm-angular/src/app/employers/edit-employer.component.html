@@ -1,0 +1,8 @@
+<tr>
+<td style="width: 15em;">{{employer.Name}}</td>
+<td><button (click)="edit()">Edit</button></td>
+<td><button (click)="remove()">Remove</button></td>
+</tr>
+<tr *ngIf="expanded">
+<td colspan="3">Expanded!</td>
+</tr>

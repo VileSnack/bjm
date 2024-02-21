@@ -3,7 +3,7 @@
 <hr>
 <div class="center" *ngIf="!employers || (0 == employers.length)">There are no employers in the database.</div>
 <table class="center" *ngIf="employers && (0 != employers.length)">
-<tr *ngFor="let item of employers"><td style="width: 15em;">{{item.Name}}</td><td><button (click)="removeEmployer(item.ID)">Remove</button></td></tr>
+<app-edit-employer *ngFor="let item of employers" [employer]="item" />
 </table>
 <hr>
 <div class="center">
@@ -16,7 +16,7 @@
 <tr><td>Industry</td><td><app-select-industry [selectedValue]="newEmployer.IndustryID" (selectChanged)="onIndustryChanged($event)" /></td></tr>
 <tr><td></td><td><button [disabled]="disableAddButton()" (click)="addEmployer()">Add</button></td></tr>
 </table>
-
 <div *ngIf="updateMsg !==''" class="center alert">{{updateMsg}}</div>
 </div>
 </div>
+

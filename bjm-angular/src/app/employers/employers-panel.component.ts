@@ -64,6 +64,10 @@ export class EmployersPanelComponent {
 		});
 	}
 
+	editEmployer()
+	{
+	}
+
 	onIndustryChanged(industryID: number)
 	{
 		this.newEmployer.IndustryID = industryID;
