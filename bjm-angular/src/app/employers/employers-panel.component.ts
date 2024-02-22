@@ -54,7 +54,6 @@ export class EmployersPanelComponent {
 
 	addEmployer()
 	{
-		console.log(this.newEmployer);
 		this.apiService.addEmployer(this.newEmployer).subscribe((data:any) => {
 			this.dataService.update();
 			this.updateMsg = data.msg;

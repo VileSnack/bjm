@@ -78,6 +78,20 @@ app.get('/employers', (req, res) => {
 	});
 });
 
+app.post('/employers/:id', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let employerID = parseInt(req.params.id);
+
+	let sql = "UPDATE Employers SET Name = ?, IndustryID = ?, Spiel = ? WHERE ID = ?;";
+
+	conn.query(sql, [req.body.employer.Name, req.body.employer.IndustryID, req.body.employer.Spiel, employerID], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, msg: 'Success' });
+	});
+});
+
 app.delete('/employers/:id', (req, res) => {
 	res.header('Access-Control-Allow-Origin', '*');
 
@@ -88,7 +102,7 @@ app.delete('/employers/:id', (req, res) => {
 	conn.query(sql, [employerID], function (err, rows, fields) {
 		if (err) throw err;
 
-		res.json({ success: true, employers: rows });
+		res.json({ success: true, msg: 'Success'  });
 	});
 });
 

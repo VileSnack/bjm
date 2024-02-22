@@ -31,6 +31,11 @@ export class ApiService {
 		return this.httpClient.delete<any>(`${ this.url }/employers/${ employerID }`, { headers: { Accept: 'application/json' } });
 	}
 
+	updateEmployer(employer: Employer): Observable<any>
+	{
+		return this.httpClient.post<any>(`${ this.url }/employers/${ employer.ID }`, { 'employer': employer }, { headers: { Accept: 'application/json' } });
+	}
+
 	//----------------------------------------------------------------------------------------------
 	// For handling the industries.
 	//
