@@ -10,7 +10,7 @@
 <span [ngStyle]="{'display': isExpanded ? 'none' : 'inline'}" (click)="toggleAddDiv()">Add employer&#9660;</span>
 <span [ngStyle]="{'display': isExpanded ? 'inline' : 'none'}" (click)="toggleAddDiv()">Add employer&#9650;</span>
 </div>
-<div [ngStyle]="{'display': isExpanded ? 'block' : 'none'}">
+<div *ngIf="isExpanded">
 <table class="center">
 <tr><td>Name</td><td><input type="text" [(ngModel)]="newEmployer.Name"/></td></tr>
 <tr><td>Industry</td><td><app-select-industry [selectedValue]="newEmployer.IndustryID" (selectChanged)="onIndustryChanged($event)" /></td></tr>
