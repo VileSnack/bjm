@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Employer } from '../Employer';
-import { Industry } from '../Industry';
 import { ApiService } from '../api.service';
 import { DataService } from '../data.service';
+import { Employer } from '../Employer';
 
 @Component({
   selector: 'app-employers-panel',
@@ -16,8 +15,6 @@ export class EmployersPanelComponent {
 	isExpanded: boolean = false;
 
 	employers: Array<Employer> = null;
-
-	industries: Array<Industry> = null;
 
 	newEmployer: Employer = {
 		ID: -1,
@@ -39,7 +36,6 @@ export class EmployersPanelComponent {
 	//
 	notifierSubscription: Subscription = this.dataService.subjectNotifier.subscribe(notified => {
 		this.employers = this.dataService.getEmployers();
-		this.industries = this.dataService.getIndustries();
 	});
 
 	disableAddButton() : boolean
