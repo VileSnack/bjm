@@ -150,6 +150,64 @@ app.delete('/industries/:id', (req, res) => {
 });
 
 //--------------------------------------------------------------------------------------------------
+// REST API for positions
+//
+app.put('/positions', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let sql = "INSERT INTO Positions (Title, EmployerID) VALUES (?, ?);";
+
+	conn.query(sql, [
+			req.body.position.Title,
+			req.body.position.EmployerID
+		], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, msg: 'Success' });
+	});
+});
+
+app.get('/positions', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let sql = "SELECT * FROM Positions ORDER BY Title;";
+
+	conn.query(sql, [], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, positions: rows });
+	});
+});
+
+app.post('/positions/:id', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let positionID = parseInt(req.params.id);
+
+	let sql = "UPDATE Positions SET Title = ?, EmployerID = ? WHERE ID = ?;";
+
+	conn.query(sql, [req.body.position.Title, req.body.position.EmployerID, positionID], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, msg: 'Success' });
+	});
+});
+
+app.delete('/positions/:id', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let positionID = parseInt(req.params.id);
+
+	let sql = "DELETE FROM Positions WHERE ID = ?;";
+
+	conn.query(sql, [positionID], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, msg: 'Success' });
+	});
+});
+
+//--------------------------------------------------------------------------------------------------
 // REST API for users
 //
 app.put('/users', (req, res) => {

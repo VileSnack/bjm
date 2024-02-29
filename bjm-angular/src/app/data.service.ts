@@ -3,6 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { ApiService } from './api.service';
 import { Employer } from './Employer';
 import { Industry } from './Industry';
+import { Position } from './Position';
 import { UserData } from './UserData';
 
 @Injectable({
@@ -12,6 +13,7 @@ export class DataService {
 	userData: UserData = null;
 	employers: Array<Employer> = null;
 	industries: Array<Industry> = null;
+	positions: Array<Position> = null;
 	constructor(private apiService: ApiService) { }
 
 	//----------------------------------------------------------------------------------------------
@@ -40,6 +42,11 @@ export class DataService {
 		return this.industries;
 	}
 
+	public getPositions() : Array<Position>
+	{
+		return this.positions;
+	}
+
 	public update()
 	{
 		this.apiService.getIndustries().subscribe((data:any) => {
@@ -47,7 +54,11 @@ export class DataService {
 
 			this.apiService.getEmployers().subscribe((data:any) => {
 				this.employers = data.employers;
-				this.subjectNotifier.next(null);
+
+				this.apiService.getPositions().subscribe((data:any) => {
+					this.positions = data.positions;
+					this.subjectNotifier.next(null);
+				});
 			});
 		});
 	}

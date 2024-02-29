@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Employer } from './Employer';
 import { Industry } from './Industry';
+import { Position } from './Position';
 import { UserData } from './UserData';
 
 @Injectable({
@@ -50,6 +51,29 @@ export class ApiService {
 
 	removeIndustry(industryID: number): Observable<any> {
 		return this.httpClient.delete<any>(`${this.url}/industries/${industryID}`, { headers: { Accept: 'application/json' } });
+	}
+
+	//----------------------------------------------------------------------------------------------
+	// For handling positions.
+	//
+	addPosition(position: Position): Observable<any>
+	{
+		return this.httpClient.put<any>(`${this.url}/positions`, { 'position': position }, { headers: { Accept: 'application/json' } });
+	}
+
+	getPositions(): Observable<any>
+	{
+		return this.httpClient.get<any>(`${this.url}/positions`, { headers: { Accept: 'application/json' } });
+	}
+
+	removePosition(positionID: number): Observable<any>
+	{
+		return this.httpClient.delete<any>(`${ this.url }/positions/${ positionID }`, { headers: { Accept: 'application/json' } });
+	}
+
+	updatePosition(position: Position): Observable<any>
+	{
+		return this.httpClient.post<any>(`${ this.url }/positions/${ position.ID }`, { 'position': position }, { headers: { Accept: 'application/json' } });
 	}
 
 	//----------------------------------------------------------------------------------------------

@@ -24,6 +24,7 @@ import { SelectIndustryComponent } from './industries/select-industry.component'
 import { EditEmployerComponent } from './employers/edit-employer.component';
 import { PositionsPanelComponent } from './positions/positions-panel.component';
 import { SelectEmployerComponent } from './employers/select-employer.component';
+import { EditPositionComponent } from './positions/edit-position.component';
 
 @NgModule({
 	declarations: [
@@ -46,7 +47,8 @@ import { SelectEmployerComponent } from './employers/select-employer.component';
 		SelectIndustryComponent,
 		EditEmployerComponent,
 		PositionsPanelComponent,
-		SelectEmployerComponent
+		SelectEmployerComponent,
+  EditPositionComponent
 	],
 	imports: [
 		AppRoutingModule,

@@ -1,6 +1,11 @@
 <div class="container" style="width: 31em;">
 <div class="header">Positions</div>
 <hr>
-<div class="center">Some stuff goes here...</div>
+<div class="center" *ngIf="!positions || (0 == positions.length)">There are no positions in the database.</div>
+<table class="center" *ngIf="positions && (0 != positions.length)">
+<app-edit-position *ngFor="let item of positions" [position]="item" />
+</table>
+<hr>
+<div class="center">Stuff to add positions goes here...</div>
 </div>
 
