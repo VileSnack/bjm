@@ -12,6 +12,8 @@ import { Position } from '../Position';
 export class PositionsPanelComponent {
 	constructor(private apiService: ApiService, private dataService: DataService) { }
 
+	isExpanded: boolean = false;
+
 	newPosition: Position = {
 		ID: -1,
 		Title: '',
@@ -19,11 +21,6 @@ export class PositionsPanelComponent {
 	};
 
 	positions: Array<Position> = null;
-
-	ngOnInit()
-	{
-		this.dataService.update();
-	}
 
 	//----------------------------------------------------------------------------------------------
 	// Subscribes to an event in the data service which is triggered every time the data service
@@ -33,4 +30,36 @@ export class PositionsPanelComponent {
 		this.positions = this.dataService.getPositions();
 	});
 
+	updateMsg: string = '';
+
+	ngOnInit()
+	{
+		this.dataService.update();
+	}
+
+	add()
+	{
+		this.apiService.addPosition(this.newPosition).subscribe((data:any) => {
+			this.dataService.update();
+			this.updateMsg = data.msg;
+			this.newPosition.Title = '';
+			this.newPosition.EmployerID = -1;
+			setTimeout(() => this.updateMsg = '', 2000);
+		});
+	}
+
+	disableAddButton() : boolean
+	{
+		return ('' === this.newPosition.Title ||(-1 === this.newPosition.EmployerID));
+	}
+
+	onEmployerChanged(employerID: number)
+	{
+		this.newPosition.EmployerID = employerID;
+	}
+
+	toggleAddDiv()
+	{
+		this.isExpanded = !this.isExpanded;
+	}
 }

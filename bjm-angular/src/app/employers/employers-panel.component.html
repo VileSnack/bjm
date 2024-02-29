@@ -14,7 +14,7 @@
 <table class="center">
 <tr><td>Name</td><td><input type="text" [(ngModel)]="newEmployer.Name"/></td></tr>
 <tr><td>Industry</td><td><app-select-industry [selectedValue]="newEmployer.IndustryID" (selectChanged)="onIndustryChanged($event)" /></td></tr>
-<tr><td></td><td><button [disabled]="disableAddButton()" (click)="addEmployer()">Add</button></td></tr>
+<tr><td></td><td><button [disabled]="disableAddButton()" (click)="add()">Add</button></td></tr>
 </table>
 <div *ngIf="updateMsg !==''" class="center alert">{{updateMsg}}</div>
 </div>

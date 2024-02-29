@@ -1,1 +1,3 @@
-<p>select-employer works!</p>
+<select *ngIf="employers" [(ngModel)]="selectedValue" #employerID (change)="onChange(employerID.value)">
+<option *ngFor="let item of employers" [ngValue]="item.ID">{{item.Name}}</option>
+</select>

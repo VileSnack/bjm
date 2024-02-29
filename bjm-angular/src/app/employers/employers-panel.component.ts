@@ -23,13 +23,6 @@ export class EmployersPanelComponent {
 		Spiel: ''
 	};
 
-	updateMsg: string = '';
-
-	ngOnInit()
-	{
-		this.dataService.update();
-	}
-
 	//----------------------------------------------------------------------------------------------
 	// Subscribes to an event in the data service which is triggered every time the data service
 	// updates its data.
@@ -38,17 +31,14 @@ export class EmployersPanelComponent {
 		this.employers = this.dataService.getEmployers();
 	});
 
-	disableAddButton() : boolean
+	updateMsg: string = '';
+
+	ngOnInit()
 	{
-		return ('' === this.newEmployer.Name ||(-1 === this.newEmployer.IndustryID));
+		this.dataService.update();
 	}
 
-	toggleAddDiv()
-	{
-		this.isExpanded = !this.isExpanded;
-	}
-
-	addEmployer()
+	add()
 	{
 		this.apiService.addEmployer(this.newEmployer).subscribe((data:any) => {
 			this.dataService.update();
@@ -57,6 +47,11 @@ export class EmployersPanelComponent {
 			this.newEmployer.IndustryID = -1;
 			setTimeout(() => this.updateMsg = '', 5000);
 		});
+	}
+
+	disableAddButton() : boolean
+	{
+		return ('' === this.newEmployer.Name ||(-1 === this.newEmployer.IndustryID));
 	}
 
 	editEmployer()
@@ -68,12 +63,17 @@ export class EmployersPanelComponent {
 		this.newEmployer.IndustryID = industryID;
 	}
 
-	removeEmployer(employerID)
+	remove(employerID)
 	{
 		this.apiService.removeEmployer(employerID).subscribe((data:any) => {
 			this.dataService.update();
 			this.updateMsg = data.msg;
 			setTimeout(() => this.updateMsg = '', 5000);
 		});
+	}
+
+	toggleAddDiv()
+	{
+		this.isExpanded = !this.isExpanded;
 	}
 }

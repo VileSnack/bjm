@@ -1,1 +1,19 @@
-<p>edit-position works!</p>
+<tr>
+<td style="width: 15em;">{{originalTitle}}, {{employer.Name}}</td>
+<td><button (click)="edit()">Edit</button></td>
+<td><button (click)="remove()">Remove</button></td>
+</tr>
+<tr *ngIf="'' !== updateMsg"><td class="center alert" colspan="3">{{updateMsg}}</td></tr>
+<tr [ngStyle]="{'display': isExpanded }">
+<td colspan="3">
+<div class="sub-container">
+<div>
+<table>
+<tr><td style="width: 6em;">Title</td><td><input type="text" #PositionTitle [(ngModel)]="position.Title" /></td></tr>
+<tr><td>Employer</td><td><app-select-employer [selectedValue]="position.EmployerID" (selectChanged)="onEmployerChanged($event)" /></td></tr>
+<tr><td></td><td><button (click)="update()">Update</button>&nbsp;<button (click)="cancel()">Cancel</button></td></tr>
+</table>
+</div>
+</div>
+</td>
+</tr>

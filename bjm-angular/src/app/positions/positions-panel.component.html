@@ -6,6 +6,16 @@
 <app-edit-position *ngFor="let item of positions" [position]="item" />
 </table>
 <hr>
-<div class="center">Stuff to add positions goes here...</div>
+<div class="center">
+<span [ngStyle]="{'display': isExpanded ? 'none' : 'inline'}" (click)="toggleAddDiv()">Add position&#9660;</span>
+<span [ngStyle]="{'display': isExpanded ? 'inline' : 'none'}" (click)="toggleAddDiv()">Add position&#9650;</span>
 </div>
-
+<div *ngIf="isExpanded">
+<table class="center">
+<tr><td>Title</td><td><input type="text" [(ngModel)]="newPosition.Title"/></td></tr>
+<tr><td>Employer</td><td><app-select-employer [selectedValue]="newPosition.EmployerID" (selectChanged)="onEmployerChanged($event)" /></td></tr>
+<tr><td></td><td><button [disabled]="disableAddButton()" (click)="add()">Add</button></td></tr>
+</table>
+<div *ngIf="updateMsg !==''" class="center alert">{{updateMsg}}</div>
+</div>
+</div>

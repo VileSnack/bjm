@@ -32,6 +32,16 @@ export class DataService {
 		return this.userData;
 	}
 
+	public getEmployer(id: number) : Employer
+	{
+		if (this.employers)
+		{
+			return this.employers.find((employer) => employer.ID == id);
+		}
+
+		return null;
+	}
+
 	public getEmployers() : Array<Employer>
 	{
 		return this.employers;
