@@ -280,6 +280,33 @@ app.post('/users/:id', (req, res) => {
 	});
 });
 
+//--------------------------------------------------------------------------------------------------
+// REST API for work histories
+//
+app.get('/work-history/:id', (req, res) => {
+	let sql = "SELECT w.*, p.Title AS PositionTitle, e.Name AS EmployerName FROM WorkHistoryEntries AS w LEFT JOIN Positions AS p ON p.ID = w.PositionID LEFT JOIN Employers AS e ON e.ID = p.EmployerID WHERE w.UserID = ?;";
+
+	let userID = parseInt(req.params.id);
+
+	conn.query(sql, [userID], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.header('Access-Control-Allow-Origin', '*');
+
+		if (0 === rows.length)
+		{
+			res.json({ success: false, msg: 'Invalid user'});
+		}
+		else
+		{
+			res.json({ success: true, entries: rows });
+		}
+	});
+});
+
+//--------------------------------------------------------------------------------------------------
+// REST API for login
+//
 app.post('/login', (req, res) => {
 	let sql = "SELECT * FROM Users WHERE EmailAddress = ?;";
 

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ApiService } from '../api.service';
+import { WorkHistoryEntry } from '../WorkHistoryEntry';
 
 @Component({
   selector: 'app-work-history',
@@ -6,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './work-history.component.css'
 })
 export class WorkHistoryComponent {
+	@Input() userID: number;
 
+	history: Array<WorkHistoryEntry> = null;
 }

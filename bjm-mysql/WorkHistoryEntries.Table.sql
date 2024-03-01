@@ -1,0 +1,10 @@
+USE bjm;
+
+CREATE TABLE IF NOT EXISTS WorkHistoryEntries (
+	ID INT NOT NULL AUTO_INCREMENT,
+	UserID INT NOT NULL,
+	PositionID INT NOT NULL,
+	StartDate DATE,
+	EndDate DATE,
+	PRIMARY KEY (ID)
+);

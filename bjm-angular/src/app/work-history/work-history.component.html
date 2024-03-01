@@ -1,6 +1,10 @@
-<table style="width: 100%;">
-<caption>Work History</caption>
-<tr><td>Most recent work history here</td></tr>
-<tr><td>Next most recent work history here</td></tr>
-<tr><td>Etc...</td></tr>
+<div class="container" style="width: 30.5em;">
+<div class="header">Work History</div>
+<div class="center" *ngIf="!history || (history.length == 0)">(No work history loaded)</div>
+<table style="width: 100%;" *ngIf="history && (history.length > 0)">
+<tr *ngFor="let item of history">
+<td style="width: 15em;">{{item.EmployerName}}</td>
+<td style="width: 15em;">{{item.PositionTitle}}</td>
+</tr>
 </table>
+</div>
