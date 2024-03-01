@@ -28,7 +28,7 @@ export class ProfileComponent {
 	{
 		this.apiService.updateUser(this.userData).subscribe((data:any) => {
 			this.updateMsg = data.msg;
-			setTimeout(() => this.updateMsg = '', 5000);
+			setTimeout(() => this.updateMsg = '', 2000);
 		});
 	}
 
