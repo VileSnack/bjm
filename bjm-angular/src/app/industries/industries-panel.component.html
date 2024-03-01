@@ -3,7 +3,7 @@
 <hr>
 <div class="center" *ngIf="!industries || (0 == industries.length)">There are no industries in the database.</div>
 <table class="center" *ngIf="industries && (0 != industries.length)">
-<tr *ngFor="let item of industries"><td style="width: 15em;">{{item.Name}}</td><td><button (click)="removeIndustry(item.ID);">Remove</button></td></tr>
+<tr *ngFor="let item of industries"><td style="width: 15em;">{{item.Name}}</td><td><button *ngIf="item.EmployerCount == 0" (click)="removeIndustry(item.ID);">Remove</button></td></tr>
 </table>
 <hr>
 <div class="center"><input id="new_industry_name" type="text" [(ngModel)]="newIndustry.Name"/>&nbsp;<button (click)="addIndustry();" [disabled]="blockAdd()">Add Industry</button></div>

@@ -17,7 +17,8 @@ export class IndustriesPanelComponent
 
 	newIndustry: Industry = {
 		ID: -1,
-		Name: ''
+		Name: '',
+		EmployerCount: 0
 	};
 
 	updateMsg: string = '';

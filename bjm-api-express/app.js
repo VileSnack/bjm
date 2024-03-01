@@ -126,7 +126,7 @@ app.put('/industries', (req, res) => {
 app.get('/industries', (req, res) => {
 	res.header('Access-Control-Allow-Origin', '*');
 
-	let sql = "SELECT * FROM Industries ORDER BY Name;";
+	let sql = "SELECT i.*, COUNT(e.ID) AS EmployerCount FROM Industries AS i LEFT JOIN Employers AS e ON e.IndustryID = i.ID GROUP BY i.ID ORDER BY Name;";
 
 	conn.query(sql, [], function (err, rows, fields) {
 		if (err) throw err;
