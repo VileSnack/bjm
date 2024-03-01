@@ -1,7 +1,9 @@
 <tr>
 <td style="width: 15em;">{{originalName}}</td>
 <td><button (click)="edit()">Edit</button></td>
-<td><button (click)="remove()">Remove</button></td>
+<td class="action" *ngIf="employer.PositionCount == 0"><button (click)="remove()">Remove</button></td>
+<td class="action" *ngIf="employer.PositionCount == 1">1 position</td>
+<td class="action" *ngIf="employer.PositionCount > 1">{{ employer.PositionCount }} positions</td>
 </tr>
 <tr *ngIf="'' !== updateMsg"><td class="center alert" colspan="3">{{updateMsg}}</td></tr>
 <tr [ngStyle]="{'display': isExpanded }">

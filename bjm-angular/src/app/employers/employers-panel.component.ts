@@ -20,7 +20,8 @@ export class EmployersPanelComponent {
 		ID: -1,
 		Name: '',
 		IndustryID: -1,
-		Spiel: ''
+		Spiel: '',
+		PositionCount: 0
 	};
 
 	//----------------------------------------------------------------------------------------------

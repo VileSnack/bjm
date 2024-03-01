@@ -3,4 +3,5 @@ export class Employer {
 	Name: string;
 	IndustryID: number;
 	Spiel: string;
+	PositionCount: number;
 }

@@ -69,7 +69,7 @@ app.put('/employers', (req, res) => {
 app.get('/employers', (req, res) => {
 	res.header('Access-Control-Allow-Origin', '*');
 
-	let sql = "SELECT * FROM Employers ORDER BY Name;";
+	let sql = "SELECT e.*, COUNT(p.ID) AS PositionCount FROM Employers AS e LEFT JOIN Positions AS p ON p.EmployerID = e.ID GROUP BY e.ID ORDER BY e.Name;";
 
 	conn.query(sql, [], function (err, rows, fields) {
 		if (err) throw err;
@@ -126,7 +126,7 @@ app.put('/industries', (req, res) => {
 app.get('/industries', (req, res) => {
 	res.header('Access-Control-Allow-Origin', '*');
 
-	let sql = "SELECT i.*, COUNT(e.ID) AS EmployerCount FROM Industries AS i LEFT JOIN Employers AS e ON e.IndustryID = i.ID GROUP BY i.ID ORDER BY Name;";
+	let sql = "SELECT i.*, COUNT(e.ID) AS EmployerCount FROM Industries AS i LEFT JOIN Employers AS e ON e.IndustryID = i.ID GROUP BY i.ID ORDER BY i.Name;";
 
 	conn.query(sql, [], function (err, rows, fields) {
 		if (err) throw err;
