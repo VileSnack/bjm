@@ -299,7 +299,7 @@ app.get('/work-history/:id', (req, res) => {
 		}
 		else
 		{
-			res.json({ success: true, entries: rows });
+			res.json({ success: true, history: rows });
 		}
 	});
 });

@@ -8,7 +8,22 @@ import { WorkHistoryEntry } from '../WorkHistoryEntry';
   styleUrl: './work-history.component.css'
 })
 export class WorkHistoryComponent {
+	constructor (private apiService: ApiService) { }
 	@Input() userID: number;
 
 	history: Array<WorkHistoryEntry> = null;
+
+	addIsExpanded: boolean = false;
+
+	ngOnInit()
+	{
+		this.apiService.getWorkHistory(this.userID).subscribe((data:any) => {
+			this.history = data.history;
+		});
+	}
+
+	toggleAdd()
+	{
+		this.addIsExpanded = !this.addIsExpanded;
+	}
 }

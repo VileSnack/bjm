@@ -7,4 +7,8 @@
 <td style="width: 15em;">{{item.PositionTitle}}</td>
 </tr>
 </table>
+<hr/>
+<div class="center" *ngIf="!addIsExpanded" (click)="toggleAdd()">Add work history &#9660;</div>
+<div class="center" *ngIf="addIsExpanded" (click)="toggleAdd()">Add work history &#9650;</div>
+<div class="center" *ngIf="addIsExpanded">Stuff to add here...</div>
 </div>

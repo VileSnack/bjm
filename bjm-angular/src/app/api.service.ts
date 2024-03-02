@@ -94,4 +94,12 @@ export class ApiService {
 	loginUser(email: string, password: string): Observable<any> {
 		return this.httpClient.post<any>(`${this.url}/login`, { 'email': email, 'password': password }, { headers: { Accept: 'application/json' } });
 	}
+
+	//----------------------------------------------------------------------------------------------
+	// For handling work histories.
+	//
+	getWorkHistory(userID: number): Observable<UserData> {
+		return this.httpClient.get<any>(`${this.url}/work-history/${userID}`, { headers: { Accept: 'application/json' } });
+	}
+
 }
