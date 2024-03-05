@@ -4,7 +4,7 @@
 <td style="vertical-align: top;">
 <div class="container" style="width: 30.5em;">
 <div>
-<table *ngIf="null !== userData">
+<table class="form" *ngIf="null !== userData">
 <caption>Basic User Data</caption>
 <tr *ngIf="2 === userData.NamingStyleID"><td>Surname</td><td><input id="profile_family_name" [(ngModel)]="userData.FamilyName" /></td></tr>
 <tr><td>Given name</td><td><input id="profile_given_name" [(ngModel)]="userData.GivenName" /></td></tr>

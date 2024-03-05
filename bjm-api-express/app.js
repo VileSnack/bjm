@@ -283,6 +283,28 @@ app.post('/users/:id', (req, res) => {
 //--------------------------------------------------------------------------------------------------
 // REST API for work histories
 //
+app.put('/work-history', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let sql = "INSERT INTO Users (EmailAddress, FamilyName, GivenName, MiddleName, NamingStyleID, Summary, UserTypeID)"
+		+ " VALUES (?, ?, ?, ?, ?, ?, ?)"
+	;
+
+	conn.query(sql, [
+			req.body.userData.EmailAddress,
+			req.body.userData.FamilyName,
+			req.body.userData.GivenName,
+			req.body.userData.MiddleName,
+			req.body.userData.NamingStyleID,
+			req.body.userData.Summary,
+			req.body.userData.UserTypeID
+		], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, msg: 'Success' });
+	});
+});
+
 app.get('/work-history/:id', (req, res) => {
 	let sql = "SELECT w.*, p.Title AS PositionTitle, e.Name AS EmployerName FROM WorkHistoryEntries AS w LEFT JOIN Positions AS p ON p.ID = w.PositionID LEFT JOIN Employers AS e ON e.ID = p.EmployerID WHERE w.UserID = ?;";
 

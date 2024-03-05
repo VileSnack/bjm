@@ -10,5 +10,14 @@
 <hr/>
 <div class="center" *ngIf="!addIsExpanded" (click)="toggleAdd()">Add work history &#9660;</div>
 <div class="center" *ngIf="addIsExpanded" (click)="toggleAdd()">Add work history &#9650;</div>
-<div class="center" *ngIf="addIsExpanded">Stuff to add here...</div>
+<div class="center" *ngIf="addIsExpanded">
+<table class="form">
+<tr><td class="test">Employer</td><td><input type="text" [(ngModel)]="newWorkHistoryInput.EmployerName"/></td></tr>
+<tr><td class="test">Position</td><td><input type="text" [(ngModel)]="newWorkHistoryInput.PositionTitle"/></td></tr>
+<tr><td class="test">Start</td><td><input type="date" [(ngModel)]="newWorkHistoryInput.StartDate" /></td></tr>
+<tr><td class="test">Current position?</td><td><input type="checkbox" [(ngModel)]="newWorkHistoryInput.Current"/></td></tr>
+<tr *ngIf="!newWorkHistoryInput.Current"><td class="test">End</td><td><input type="date" [(ngModel)]="newWorkHistoryInput.EndDate"/></td></tr>
+<tr><td></td><td><button (click)="addWorkHistory()">Add</button></tr>
+</table>
+</div>
 </div>

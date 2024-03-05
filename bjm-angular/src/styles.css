@@ -63,3 +63,14 @@ table tr td { text-align: left; }
 	border-top: 1px solid #cccccc;
 }
 
+table.form td:nth-child(1)
+{
+	padding-right: .5em;
+}
+
+[type="checkbox"]
+{
+	width: 12pt;
+	height: 12pt;
+	margin-left: 0;
+}
