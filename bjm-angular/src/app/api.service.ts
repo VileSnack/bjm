@@ -5,6 +5,7 @@ import { Employer } from './Employer';
 import { Industry } from './Industry';
 import { Position } from './Position';
 import { UserData } from './UserData';
+import { WorkHistoryInput } from './WorkHistoryInput';
 
 @Injectable({
 	providedIn: 'root'
@@ -98,6 +99,11 @@ export class ApiService {
 	//----------------------------------------------------------------------------------------------
 	// For handling work histories.
 	//
+	addWorkHistory(input: WorkHistoryInput): Observable<UserData> {
+		console.log(input);
+		return this.httpClient.put<any>(`${this.url}/work-history`, { 'input': input }, { headers: { Accept: 'application/json' } });
+	}
+
 	getWorkHistory(userID: number): Observable<UserData> {
 		return this.httpClient.get<any>(`${this.url}/work-history/${userID}`, { headers: { Accept: 'application/json' } });
 	}

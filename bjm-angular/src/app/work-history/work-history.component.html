@@ -3,8 +3,7 @@
 <div class="center" *ngIf="!history || (history.length == 0)">(No work history loaded)</div>
 <table style="width: 100%;" *ngIf="history && (history.length > 0)">
 <tr *ngFor="let item of history">
-<td style="width: 15em;">{{item.EmployerName}}</td>
-<td style="width: 15em;">{{item.PositionTitle}}</td>
+<td><app-work-history-entry [entry]="item"/></td>
 </tr>
 </table>
 <hr/>
@@ -12,12 +11,13 @@
 <div class="center" *ngIf="addIsExpanded" (click)="toggleAdd()">Add work history &#9650;</div>
 <div class="center" *ngIf="addIsExpanded">
 <table class="form">
-<tr><td class="test">Employer</td><td><input type="text" [(ngModel)]="newWorkHistoryInput.EmployerName"/></td></tr>
-<tr><td class="test">Position</td><td><input type="text" [(ngModel)]="newWorkHistoryInput.PositionTitle"/></td></tr>
-<tr><td class="test">Start</td><td><input type="date" [(ngModel)]="newWorkHistoryInput.StartDate" /></td></tr>
-<tr><td class="test">Current position?</td><td><input type="checkbox" [(ngModel)]="newWorkHistoryInput.Current"/></td></tr>
-<tr *ngIf="!newWorkHistoryInput.Current"><td class="test">End</td><td><input type="date" [(ngModel)]="newWorkHistoryInput.EndDate"/></td></tr>
+<tr><td>Employer</td><td><input type="text" [(ngModel)]="newWorkHistoryInput.EmployerName"/></td></tr>
+<tr><td>Position</td><td><input type="text" [(ngModel)]="newWorkHistoryInput.PositionTitle"/></td></tr>
+<tr><td>Start</td><td><input type="date" [(ngModel)]="newWorkHistoryInput.StartDate" /></td></tr>
+<tr><td>Current position?</td><td><input type="checkbox" [(ngModel)]="newWorkHistoryInput.IsCurrent"/></td></tr>
+<tr *ngIf="!newWorkHistoryInput.IsCurrent"><td class="test">End</td><td><input type="date" [(ngModel)]="newWorkHistoryInput.EndDate"/></td></tr>
 <tr><td></td><td><button (click)="addWorkHistory()">Add</button></tr>
+<tr *ngIf="'' != updateMsg"><td></td><td class="alert">{{updateMsg}}</td></tr>
 </table>
 </div>
 </div>

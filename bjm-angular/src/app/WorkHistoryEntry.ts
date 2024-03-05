@@ -4,7 +4,7 @@ export class WorkHistoryEntry {
 	PositionID: number;
 	StartDate: Date;
 	EndDate: Date;
+	IsCurrent: boolean;
 	PositionTitle: string;
 	EmployerName: string;
-	IsCurrent: boolean;
 }

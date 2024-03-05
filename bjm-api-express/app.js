@@ -7,7 +7,18 @@ const conn = mysql.createConnection({
 	host: 'localhost',
 	user: 'bjm',
 	password: 'asAS12!@',
-	database: 'bjm'
+	database: 'bjm',
+	typeCast: function castField(field, useDefaultTypeCasting)
+	{
+		if ((field.type === "BIT") && (field.length === 1))
+		{
+			var bytes = field.buffer();
+			return(bytes[0] === 1);
+		}
+
+		return(useDefaultTypeCasting());
+
+	}
 });
 
 conn.connect(function(err) {
@@ -286,18 +297,16 @@ app.post('/users/:id', (req, res) => {
 app.put('/work-history', (req, res) => {
 	res.header('Access-Control-Allow-Origin', '*');
 
-	let sql = "INSERT INTO Users (EmailAddress, FamilyName, GivenName, MiddleName, NamingStyleID, Summary, UserTypeID)"
-		+ " VALUES (?, ?, ?, ?, ?, ?, ?)"
+	let sql = "CALL AddWorkHistory(?, ?, ?, ?, ?, ?);"
 	;
 
 	conn.query(sql, [
-			req.body.userData.EmailAddress,
-			req.body.userData.FamilyName,
-			req.body.userData.GivenName,
-			req.body.userData.MiddleName,
-			req.body.userData.NamingStyleID,
-			req.body.userData.Summary,
-			req.body.userData.UserTypeID
+			parseInt(req.body.input.EmployeeID),
+			req.body.input.EmployerName,
+			req.body.input.PositionTitle,
+			req.body.input.StartDate,
+			req.body.input.EndDate,
+			req.body.input.IsCurrent
 		], function (err, rows, fields) {
 		if (err) throw err;
 
@@ -306,7 +315,10 @@ app.put('/work-history', (req, res) => {
 });
 
 app.get('/work-history/:id', (req, res) => {
-	let sql = "SELECT w.*, p.Title AS PositionTitle, e.Name AS EmployerName FROM WorkHistoryEntries AS w LEFT JOIN Positions AS p ON p.ID = w.PositionID LEFT JOIN Employers AS e ON e.ID = p.EmployerID WHERE w.UserID = ?;";
+	let sql = "SELECT w.*, p.Title AS PositionTitle, e.Name AS EmployerName"
+		+ " FROM WorkHistoryEntries AS w LEFT JOIN Positions AS p ON p.ID = w.PositionID LEFT JOIN Employers AS e ON e.ID = p.EmployerID"
+		+ " WHERE w.UserID = ?"
+		+ " ORDER BY w.StartDate DESC;";
 
 	let userID = parseInt(req.params.id);
 
@@ -315,14 +327,7 @@ app.get('/work-history/:id', (req, res) => {
 
 		res.header('Access-Control-Allow-Origin', '*');
 
-		if (0 === rows.length)
-		{
-			res.json({ success: false, msg: 'Invalid user'});
-		}
-		else
-		{
-			res.json({ success: true, history: rows });
-		}
+		res.json({ success: true, history: rows });
 	});
 });
 

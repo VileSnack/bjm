@@ -1,0 +1,8 @@
+<div class="sub-container">
+<div>
+<span>{{entry.PositionTitle}}</span><br/>
+<span>{{entry.EmployerName}}</span><br/>
+<span *ngIf="entry.IsCurrent">Since {{startDate}}</span>
+<span *ngIf="!entry.IsCurrent">{{startDate}} to {{endDate}}</span>
+</div>
+</div>

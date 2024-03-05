@@ -13,41 +13,41 @@ CREATE PROCEDURE AddWorkHistory(
     IN IsCurrent BIT
 )
 BEGIN
-	DECLARE @EmployerID INT;
-    DECLARE @PositionID INT;
+	DECLARE l_EmployerID INT;
+    DECLARE l_PositionID INT;
 
-	SET @EmployerID = (SELECT ID FROM Employers WHERE Name = EmployerName);
+	SET l_EmployerID = (SELECT ID FROM Employers WHERE Name = EmployerName);
 
-	IF @EmployerID IS NULL THEN
-    BEGIN
+	IF l_EmployerID IS NULL THEN
 		INSERT INTO Employers(Name, IndustryID, Spiel)
         SELECT EmployerName AS Name,
 			-1 AS IndustryID,
             '' AS Spiel
 		;
         
-        SET @EmployerID = last_insert_id();
-    END
+        SET l_EmployerID = last_insert_id();
+    END IF;
 
-	SET @PositionID = (SELECT ID FROM Positions WHERE EmployerID = @EmployerID AND Title = PositionTitle);
+	SET l_PositionID = (SELECT ID FROM Positions WHERE EmployerID = l_EmployerID AND Title = PositionTitle);
 
-	IF @PositionID IS NULL THEN
-    BEGIN
+	IF l_PositionID IS NULL THEN
 		INSERT INTO Positions(Title, EmployerID)
         SELECT PositionTitle AS Title,
-			@EmployerID AS EmployerID
+			l_EmployerID AS EmployerID
 		;
         
-        SET @PositionID = last_insert_id();
-    END
+        SET l_PositionID = last_insert_id();
+    END IF;
 
 	INSERT INTO WorkHistoryEntries(UserID, PositionID, StartDate, EndDate, IsCurrent)
     SELECT EmployeeID AS UserID,
-		@PositionID AS PositionID,
+		l_PositionID AS PositionID,
         StartDate AS StartDate,
         EndDate AS EndDate,
         IsCurrent AS IsCurrent
 	;
-END ;
+
+END $$
 
 DELIMITER ;
+

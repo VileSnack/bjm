@@ -12,6 +12,8 @@ export class WorkHistoryComponent {
 	constructor (private apiService: ApiService) { }
 	@Input() userID: number;
 
+	addIsExpanded: boolean = false;
+
 	history: Array<WorkHistoryEntry> = null;
 
 	newWorkHistoryInput: WorkHistoryInput = {
@@ -23,7 +25,7 @@ export class WorkHistoryComponent {
 		EndDate: null
 	};
 
-	addIsExpanded: boolean = false;
+	updateMsg: string = '';
 
 	ngOnInit()
 	{
@@ -33,7 +35,13 @@ export class WorkHistoryComponent {
 
 	addWorkHistory()
 	{
-		console.log(this.newWorkHistoryInput);
+		this.apiService.addWorkHistory(this.newWorkHistoryInput).subscribe((data:any) => {
+			this.updateMsg = data.msg;
+			setTimeout(() => {
+				this.updateMsg = '';
+				this.refresh();
+			} , 2000);
+		});
 	}
 
 	refresh()
