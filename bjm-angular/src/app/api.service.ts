@@ -78,6 +78,14 @@ export class ApiService {
 	}
 
 	//----------------------------------------------------------------------------------------------
+	// For handling position functions.
+	//
+	getPositionFunctions(positionID: number): Observable<any>
+	{
+		return this.httpClient.get<any>(`$ { this.url }/position/functions/${ positionID }`, { headers: { Accept: 'applications/json' } });
+	}
+
+	//----------------------------------------------------------------------------------------------
 	// For handling users.
 	//
 	getUser(userID: number): Observable<UserData> {

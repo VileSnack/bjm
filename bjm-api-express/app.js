@@ -219,6 +219,39 @@ app.delete('/positions/:id', (req, res) => {
 });
 
 //--------------------------------------------------------------------------------------------------
+// REST API for functions of positions
+//
+app.put('/position/functions', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let sql = "CALL AddPositionFunction(?, ?);"
+	;
+
+	conn.query(sql, [
+			parseInt(req.body.input.PositionID),
+			req.body.input.FunctionName
+		], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, msg: 'Success' });
+	});
+});
+
+app.get('/position/functions/:id', (req, res) => {
+	res.header('Access-Control-Allow-Origin', '*');
+
+	let positionID = parseInt(req.params.id);
+
+	let sql = "SELECT f.* FROM PositionFunctions AS pf INNER JOIN Functions AS f ON f.ID = pf.FunctionID WHERE PositionID = ? ORDER BY f.Name;";
+
+	conn.query(sql, [positionID], function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json({ success: true, functions: rows });
+	});
+});
+
+//--------------------------------------------------------------------------------------------------
 // REST API for users
 //
 app.put('/users', (req, res) => {

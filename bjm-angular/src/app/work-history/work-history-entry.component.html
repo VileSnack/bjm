@@ -10,5 +10,6 @@
 <hr *ngIf="isExpanded" />
 <div *ngIf="isExpanded">
 <div class="center">Functions</div>
+<div *ngIf="null == functions || 0 == functions.length" class="center small">No functions are defined for this position.</div>
 </div>
 </div>

@@ -4,6 +4,30 @@ body {
 	cursor: default;
 }
 
+table caption { font-size: 120%; }
+
+table tr td { text-align: left; }
+
+table.form td:nth-child(1)
+{
+	padding-right: .5em;
+}
+
+[type="checkbox"]
+{
+	width: 12pt;
+	height: 12pt;
+	margin-left: 0;
+}
+
+.alert { color: red; text-align: center;}
+
+.center {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
 .container {
 	width: auto;
 	margin: 1em .5em 0 .5em;
@@ -23,6 +47,14 @@ body {
 	border-top: 1px solid #cccccc;
 }
 
+.function {
+	width: auto;
+	margin: 0 .25em;
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+	padding: 3px;
+}
+
 .header {
 	font-size: 120%;
 	margin-left: auto;
@@ -30,19 +62,7 @@ body {
 	text-align: center;
 }
 
-.center {
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-}
-
-.alert { color: red; text-align: center;}
-
 .small { font-size: 80%; }
-
-table caption { font-size: 120%; }
-
-table tr td { text-align: left; }
 
 .sub-container {
 	width: auto;
@@ -61,16 +81,4 @@ table tr td { text-align: left; }
 	border-left: 0;
 	border-right: 0;
 	border-top: 1px solid #cccccc;
-}
-
-table.form td:nth-child(1)
-{
-	padding-right: .5em;
-}
-
-[type="checkbox"]
-{
-	width: 12pt;
-	height: 12pt;
-	margin-left: 0;
 }
