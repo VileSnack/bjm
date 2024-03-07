@@ -49,10 +49,11 @@ table.form td:nth-child(1)
 
 .function {
 	width: auto;
-	margin: 0 .25em;
+	margin: 2px .25em;
 	border: 1px solid #cccccc;
 	border-radius: 5px;
 	padding: 3px;
+	white-space: nowrap;
 }
 
 .header {

@@ -5,6 +5,7 @@ import { Employer } from './Employer';
 import { Industry } from './Industry';
 import { Position } from './Position';
 import { UserData } from './UserData';
+import { PositionFunctionInput } from './PositionFunctionInput';
 import { WorkHistoryInput } from './WorkHistoryInput';
 
 @Injectable({
@@ -80,9 +81,13 @@ export class ApiService {
 	//----------------------------------------------------------------------------------------------
 	// For handling position functions.
 	//
+	addPositionFunction(input: PositionFunctionInput): Observable<UserData> {
+		return this.httpClient.put<any>(`${ this.url }/position/functions`, { 'input': input }, { headers: { Accept: 'application/json' } });
+	}
+
 	getPositionFunctions(positionID: number): Observable<any>
 	{
-		return this.httpClient.get<any>(`$ { this.url }/position/functions/${ positionID }`, { headers: { Accept: 'applications/json' } });
+		return this.httpClient.get<any>(`${ this.url }/position/functions/${ positionID }`, { headers: { Accept: 'applications/json' } });
 	}
 
 	//----------------------------------------------------------------------------------------------
@@ -108,7 +113,6 @@ export class ApiService {
 	// For handling work histories.
 	//
 	addWorkHistory(input: WorkHistoryInput): Observable<UserData> {
-		console.log(input);
 		return this.httpClient.put<any>(`${this.url}/work-history`, { 'input': input }, { headers: { Accept: 'application/json' } });
 	}
 

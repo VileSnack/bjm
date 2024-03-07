@@ -11,5 +11,10 @@
 <div *ngIf="isExpanded">
 <div class="center">Functions</div>
 <div *ngIf="null == functions || 0 == functions.length" class="center small">No functions are defined for this position.</div>
+<div *ngIf="null != functions && 0 != functions.length" style="display: flex; flex-wrap: wrap;">
+<span class="function" *ngFor="let item of functions">{{item.Name}}</span>
+</div>
+<div class="center"><input type="text" [(ngModel)]="newFunction"/>&nbsp;<button (click)="addFunction()">Add function</button></div>
+<div class="alert" *ngIf="'' != updateMsg">{{updateMsg}}</div>
 </div>
 </div>

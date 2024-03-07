@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { ApiService } from '../api.service';
 import { Function } from '../Function';
+import { PositionFunctionInput } from '../PositionFunctionInput';
 import { WorkHistoryEntry } from '../WorkHistoryEntry';
 
 @Component({
@@ -20,17 +21,33 @@ export class WorkHistoryEntryComponent {
 
 	isExpanded: boolean = false;
 
+	newFunction: string = '';
+
+	updateMsg: string = '';
+
 	ngOnInit()
 	{
 		this.startDate = formatDate(this.entry.StartDate, 'MMM yyyy', 'en-US');
 		this.endDate = formatDate(this.entry.EndDate, 'MMM yyyy', 'en-US');
-		this.refreshFunctions();
+		this.refreshFunctionList();
 	}
 
-	refreshFunctions()
+	addFunction()
+	{
+		this.apiService.addPositionFunction({ 'PositionID': this.entry.PositionID, 'FunctionName': this.newFunction }).subscribe((data:any) => {
+			this.updateMsg = data.msg;
+			setTimeout(() => {
+				this.newFunction = '';
+				this.updateMsg = '';
+				this.refreshFunctionList();
+			} , 2000);
+		});
+	}
+
+	refreshFunctionList()
 	{
 		this.apiService.getPositionFunctions(this.entry.PositionID).subscribe((data:any) => {
-			this.functions = data.history;
+			this.functions = data.functions;
 		});
 	}
 
