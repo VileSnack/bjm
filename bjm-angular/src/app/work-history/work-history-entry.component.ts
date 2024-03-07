@@ -13,10 +13,16 @@ export class WorkHistoryEntryComponent {
 	endDate: string = '';
 	startDate: string = '';
 
+	isExpanded: boolean = false;
+
 	ngOnInit()
 	{
 		this.startDate = formatDate(this.entry.StartDate, 'MMM yyyy', 'en-US');
 		this.endDate = formatDate(this.entry.EndDate, 'MMM yyyy', 'en-US');
 	}
 
+	toggleExpansion()
+	{
+		this.isExpanded = !this.isExpanded;
+	}
 }
