@@ -20,7 +20,7 @@ The root level folders in the repository are:
   * Log in (note that the password is not required, as this is a work-in-progress).
   * Edit his/her basic profile data.
   * Administrative users can add new industries and delete existing industries.
-  * Job seekers can add to their work histories.
+  * Job seekers can add to their work histories, including the functions performed in each job.
 
 * `bjm-api-express`: This contains the code for a RESTful API written using Node.js Express. It interfaces the front end with the database. At the moment is supports CRUD operations for industries, employers, and positions.
 
