@@ -1,0 +1,22 @@
+.select-box
+{
+	margin: 0;
+	position: relative;
+}
+
+.input-box
+{
+	width: 12.675em;
+}
+
+.match-box
+{
+	background-color: #fff7df;
+	border: 1px solid #dddddd;
+	margin: 0;
+	position: absolute;
+	left: -.5em;
+	top: 1.5em;
+	width: 12em;
+	z-index: 1000;
+}

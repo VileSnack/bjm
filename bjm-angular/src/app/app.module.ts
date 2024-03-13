@@ -26,6 +26,7 @@ import { PositionsPanelComponent } from './positions/positions-panel.component';
 import { SelectEmployerComponent } from './employers/select-employer.component';
 import { EditPositionComponent } from './positions/edit-position.component';
 import { WorkHistoryEntryComponent } from './work-history/work-history-entry.component';
+import { DropdownControlComponent } from './dropdown-control/dropdown-control.component';
 
 @NgModule({
 	declarations: [
@@ -50,7 +51,8 @@ import { WorkHistoryEntryComponent } from './work-history/work-history-entry.com
 		PositionsPanelComponent,
 		SelectEmployerComponent,
 		EditPositionComponent,
-		WorkHistoryEntryComponent
+		WorkHistoryEntryComponent,
+  DropdownControlComponent
 	],
 	imports: [
 		AppRoutingModule,
