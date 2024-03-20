@@ -17,6 +17,17 @@
 	position: absolute;
 	left: -.5em;
 	top: 1.5em;
-	width: 12em;
+	min-width: 12em;
+	overflow-x: hidden;
+	max-height: 5em;
 	z-index: 1000;
+}
+
+.match-box div
+{
+	font-size: 10pt;
+	margin: 0;
+	padding: 1px;
+	white-space: nowrap;
+	width: auto;
 }
