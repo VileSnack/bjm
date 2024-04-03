@@ -11,7 +11,7 @@
 <div class="center" *ngIf="addIsExpanded" (click)="toggleAdd()">Add work history &#9650;</div>
 <div class="center" *ngIf="addIsExpanded">
 <table class="form">
-<tr><td>Employer</td><td><app-dropdown-control /></td></tr>
+<tr><td>Employer</td><td><app-dropdown-control (valueChanged)="onEmployerNameChange($event)" [options]="employers" /></td></tr>
 <tr><td>Position</td><td><input type="text" [(ngModel)]="newWorkHistoryInput.PositionTitle"/></td></tr>
 <tr><td>Start</td><td><input type="date" [(ngModel)]="newWorkHistoryInput.StartDate" /></td></tr>
 <tr><td>Current position?</td><td><input type="checkbox" [(ngModel)]="newWorkHistoryInput.IsCurrent"/></td></tr>

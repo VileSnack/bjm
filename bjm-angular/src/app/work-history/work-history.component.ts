@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ApiService } from '../api.service';
+import { Employer } from '../Employer';
+import { SelectOption } from '../SelectOption';
 import { WorkHistoryEntry } from '../WorkHistoryEntry';
 import { WorkHistoryInput } from '../WorkHistoryInput';
 
@@ -13,6 +15,8 @@ export class WorkHistoryComponent {
 	@Input() userID: number;
 
 	addIsExpanded: boolean = false;
+
+	employers: Array<SelectOption> = [];
 
 	history: Array<WorkHistoryEntry> = null;
 
@@ -33,6 +37,11 @@ export class WorkHistoryComponent {
 		this.refresh();
 	}
 
+	onEmployerNameChange(value: string)
+	{
+		this.newWorkHistoryInput.EmployerName = value;
+	}
+
 	addWorkHistory()
 	{
 		this.apiService.addWorkHistory(this.newWorkHistoryInput).subscribe((data:any) => {
@@ -48,6 +57,14 @@ export class WorkHistoryComponent {
 	{
 		this.apiService.getWorkHistory(this.userID).subscribe((data:any) => {
 			this.history = data.history;
+		});
+
+		this.employers.length = 0;
+
+		this.apiService.getEmployers().subscribe((data:any) => {
+			data.employers.forEach((employer) => {
+				this.employers.push({ Value: employer.ID, DisplayText: employer.Name, MatchText: employer.Name.toLowerCase().replace(/[^a-z0-9]/g, '') });
+			});
 		});
 	}
 

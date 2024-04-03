@@ -1,7 +1,6 @@
 <div class="sub-container">
 <div>
-<span>{{entry.PositionTitle}}</span><br/>
-<span>{{entry.EmployerName}}</span><br/>
+<span>{{entry.PositionTitle}}</span>, <span>{{entry.EmployerName}}</span><br/>
 <span *ngIf="entry.IsCurrent">Since {{startDate}}</span>
 <span *ngIf="!entry.IsCurrent">{{startDate}} to {{endDate}}</span>
 <span *ngIf="!isExpanded" style="float: right;" (click)="toggleExpansion()">&#9660;</span>

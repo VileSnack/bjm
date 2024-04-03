@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { SelectOption } from '../SelectOption';
 
 @Component({
@@ -7,40 +7,12 @@ import { SelectOption } from '../SelectOption';
 	styleUrl: './dropdown-control.component.css'
 })
 export class DropdownControlComponent {
+	@Input() options: Array<SelectOption>;
+	@Output() valueChanged: EventEmitter<number> = new EventEmitter();
+
 	hasFocus: boolean = false;
 
 	inputText: string = '';
-
-	options: Array<SelectOption> = [
-		{	Value: 1,
-			DisplayText: 'The Ford Motor Corporation',
-			MatchText: 'fordmotorcorporation'
-		},
-		{	Value: 2,
-			DisplayText: 'Burger King',
-			MatchText: 'burgerking'
-		},
-		{	Value: 3,
-			DisplayText: 'Mcdonalds',
-			MatchText: 'mcdonalds'
-		},
-		{	Value: 4,
-			DisplayText: 'Microsoft',
-			MatchText: 'microsoft'
-		},
-		{	Value: 5,
-			DisplayText: 'Walmart',
-			MatchText: 'walmart'
-		},
-		{	Value: 6,
-			DisplayText: 'Alphabet',
-			MatchText: 'alphabet'
-		},
-		{	Value: 7,
-			DisplayText: 'Dow Chemical Corporation',
-			MatchText: 'dowchemicalcorporation'
-		}
-	];
 
 	match: Array<SelectOption> = [ ];
 
@@ -62,7 +34,9 @@ export class DropdownControlComponent {
 			if (option.MatchText.startsWith(value)) this.match.push(option);
 		});
 
-		this.matchDisplay = (this.match.length > 0) ? 'block' : 'none'
+		this.matchDisplay = (this.match.length > 0) ? 'block' : 'none';
+
+		this.valueChanged.emit(event.target.value);
 	}
 
 	setFocus(focus: boolean)
