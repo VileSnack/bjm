@@ -1,6 +1,6 @@
 <div class="select-box">
 <input class="input-box" [(ngModel)]="inputText" (focus)="setFocus(true)" (blur)="setFocus(false)" (input)="onChange($event)"/>
 <div class="match-box" [style]="{'display': matchDisplay }">
-<div *ngFor="let item of match">{{item.DisplayText}}</div>
+<div *ngFor="let item of match" (click)="clickOption(item)">{{item.DisplayText}}</div>
 </div>
 </div>

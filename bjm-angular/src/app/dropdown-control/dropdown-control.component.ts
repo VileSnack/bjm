@@ -8,7 +8,7 @@ import { SelectOption } from '../SelectOption';
 })
 export class DropdownControlComponent {
 	@Input() options: Array<SelectOption>;
-	@Output() valueChanged: EventEmitter<number> = new EventEmitter();
+	@Output() valueChanged: EventEmitter<string> = new EventEmitter();
 
 	hasFocus: boolean = false;
 
@@ -17,6 +17,13 @@ export class DropdownControlComponent {
 	match: Array<SelectOption> = [ ];
 
 	matchDisplay: string = 'none';
+
+	clickOption(option: SelectOption)
+	{
+		this.inputText = option.DisplayText;
+		this.valueChanged.emit(option.DisplayText);
+		this.matchDisplay = 'none';
+	}
 
 	onChange(event)
 	{
