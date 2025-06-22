@@ -37,5 +37,8 @@ The best way is to clone the repo to your local directory, ensure that the requi
 To set up the DB you will need to:
 
 * Create a MySQL DB named `bjm`;
-* Configure a user to match the credentials in `bjm-api-express/app.js`
+* Configure a user to match the credentials expected in `bjm-api-express/app.js`
 * Run the scripts in `bjm-mysql` against that database.
+
+To run the Angular version, open up a command prompt and run `node app` from within the `bjm-api-express` folder, and then in a separate command prompt run `ns serve` from within the bjm-angular folder. You can then access the site via the URL `http:\\localhost:4200`. The user credentials are stored in the table Users in the MySql database.
+
