@@ -22,11 +22,13 @@ The root level folders in the repository are:
   * Administrative users can add new industries and delete existing industries.
   * Job seekers can add to their work histories, including the functions performed in each job.
 
+And that's where I'm stopping with the Angular version of this, because Angular is simply too much trouble. I'll be working the React version from here on, and once I've implemented everything in React that's already been done in Angular, I'll be removing the Angular portion from this repo.
+
 * `bjm-api-express`: This contains the code for a RESTful API written using Node.js Express. It interfaces the front end with the database. At the moment is supports CRUD operations for industries, employers, and positions.
 
 * `bjm-mysql`: This contains SQL scripts for creating the MySQL database used by the web site. It is very incomplete.
 
-* `bjm-react`: This contains the code for the app, built in React. At the moment it has only the barest functionality, and since all development will take place on the Angular version before being deported to the React version, the latter will always lag behind the former.
+* `bjm-react`: This contains the code for the app, built in React. At the moment it has only the barest functionality.
 
 # Deployment
 
@@ -40,5 +42,5 @@ To set up the DB you will need to:
 * Configure a user to match the credentials expected in `bjm-api-express/app.js`
 * Run the scripts in `bjm-mysql` against that database.
 
-To run the Angular version, open up a command prompt and run `node app` from within the `bjm-api-express` folder, and then in a separate command prompt run `ns serve` from within the bjm-angular folder. You can then access the site via the URL `http:\\localhost:4200`. The user credentials are stored in the table Users in the MySql database.
+To run the Angular version, open up a command prompt, CD to the `bjm-api-express` folder, and run `node app`, and then in a separate command prompt CD to the `bjm-angular` folder, and run `ng serve`. You can then access the site via the URL `http:\\localhost:4200`. The user credentials are stored in the table Users in the MySql database.
 

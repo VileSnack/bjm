@@ -1,0 +1,8 @@
+USE bjm;
+
+CREATE TABLE IF NOT EXISTS Requirements (
+	OpeningID INT NOT NULL,
+	DutyID INT NOT NULL,
+	MinExperience INT NOT NULL,
+	PRIMARY KEY (ID)
+);

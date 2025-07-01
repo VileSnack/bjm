@@ -1,0 +1,9 @@
+USE bjm;
+
+CREATE TABLE IF NOT EXISTS Openings (
+	ID INT NOT NULL AUTO_INCREMENT,
+	Title NVARCHAR(100),
+	EmployerID INT,
+	RecruiterID INT,
+	PRIMARY KEY (ID)
+);
